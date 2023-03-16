@@ -7,9 +7,12 @@ terraform {
     }
   }
 }
+
+variable "token" {}
+
 provider "grafana" {
   alias = "play"
 
   url   = "https://play.grafana.org"
-  auth  = "eyJrIjoiUDBMTHdMMGhwNzNrN2pLTGxiZmpsQVRyWWtCRVRlVUgiLCJuIjoicGxheS1hcy1jb2RlIiwiaWQiOjF9"
+  auth  = "${var.token}"
 }
