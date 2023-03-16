@@ -1,0 +1,257 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1497,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "play-influx"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "net"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 10
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "magType"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 5
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "id"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 98
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 31
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "depth"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 13
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "title"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 335
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 18,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "mag"
+            }
+          ]
+        },
+        "pluginVersion": "9.4.4-2911eec",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "play-influx"
+            },
+            "query": "from(bucket: \"usgs-earthquakes\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  ",
+            "refId": "A"
+          }
+        ],
+        "title": "Largest Earthquakes by Magnitude around the Globe, past 30 days",
+        "transformations": [
+          {
+            "id": "labelsToFields",
+            "options": {}
+          },
+          {
+            "id": "merge",
+            "options": {}
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "code": true,
+                "depth": true,
+                "dmin": true,
+                "gap": true,
+                "id": true,
+                "ids": true,
+                "magType": true,
+                "net": true
+              },
+              "indexByName": {
+                "Time": 0,
+                "alert": 25,
+                "cdi": 23,
+                "code": 2,
+                "depth": 1,
+                "detail": 7,
+                "dmin": 8,
+                "felt": 24,
+                "gap": 9,
+                "id": 3,
+                "ids": 10,
+                "lat": 12,
+                "lon": 13,
+                "mag": 11,
+                "magType": 4,
+                "mmi": 26,
+                "net": 5,
+                "nst": 14,
+                "place": 15,
+                "rms": 16,
+                "sig": 17,
+                "sources": 18,
+                "status": 19,
+                "title": 6,
+                "tsunami": 20,
+                "types": 21,
+                "url": 22
+              },
+              "renameByName": {}
+            }
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "refresh": "",
+    "revision": 1,
+    "schemaVersion": 38,
+    "style": "dark",
+    "tags": [
+      "influxdb",
+      "flux",
+      "community",
+      "real-time",
+      "public",
+      "ds-example"
+    ],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Influx 2.2: Live USGS Earthquake Data",
+    "uid": "influx-earthquake",
+    "version": 10,
+    "weekStart": ""
+  }
