@@ -1,0 +1,132 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1551,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "play-elastic-ecommerce"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 16,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true
+        },
+        "pluginVersion": "9.4.7",
+        "targets": [
+          {
+            "alias": "",
+            "bucketAggs": [],
+            "datasource": {
+              "type": "elasticsearch",
+              "uid": "play-elastic-ecommerce"
+            },
+            "metrics": [
+              {
+                "id": "1",
+                "settings": {
+                  "size": "500"
+                },
+                "type": "raw_data"
+              }
+            ],
+            "query": "",
+            "refId": "A",
+            "timeField": "order_date"
+          }
+        ],
+        "title": "Panel Title",
+        "type": "table"
+      }
+    ],
+    "refresh": "",
+    "revision": 1,
+    "schemaVersion": 38,
+    "style": "dark",
+    "tags": [
+      "elastic",
+      "community",
+      "ds-example"
+    ],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "2022-07-11T20:58:15.282Z",
+      "to": "2022-07-13T06:26:47.391Z"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Elasticsearch 8.2.0: Sample eCommerce Orders",
+    "uid": "elastic-ecommerce",
+    "version": 6,
+    "weekStart": ""
+  }
