@@ -1,0 +1,190 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "description": "",
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1501,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "play-mysql-sakila"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "currencyUSD"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 16,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "8.5.4",
+        "targets": [
+          {
+            "datasource": {
+              "type": "mysql",
+              "uid": "play-mysql-sakila"
+            },
+            "format": "table",
+            "group": [
+              {
+                "params": [
+                  "1h",
+                  "NULL"
+                ],
+                "type": "time"
+              }
+            ],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "rawSql": "SELECT\n  $__timeGroupAlias(payment_date,1h,NULL),\n  sum(amount) AS \"amount\"\nFROM payment\nWHERE\n  $__timeFilter(payment_date)\nGROUP BY 1\nORDER BY $__timeGroup(payment_date,1h,NULL)",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "amount"
+                  ],
+                  "type": "column"
+                },
+                {
+                  "params": [
+                    "sum"
+                  ],
+                  "type": "aggregate"
+                },
+                {
+                  "params": [
+                    "amount"
+                  ],
+                  "type": "alias"
+                }
+              ]
+            ],
+            "table": "payment",
+            "timeColumn": "payment_date",
+            "timeColumnType": "datetime",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Total Sales Per Hour",
+        "type": "timeseries"
+      }
+    ],
+    "refresh": "",
+    "revision": 1,
+    "schemaVersion": 38,
+    "style": "dark",
+    "tags": [
+      "mysql",
+      "community",
+      "ds-example"
+    ],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "2005-05-24T18:03:06.453Z",
+      "to": "2005-05-31T18:22:27.878Z"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "MySQL 8: Sakila Video Store Dummy Data",
+    "uid": "play-mysql-sakila",
+    "version": 5,
+    "weekStart": ""
+  }
