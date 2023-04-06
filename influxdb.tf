@@ -50,7 +50,6 @@ resource "grafana_dashboard" "play-dashboard-influx-01" {
 }
 
 output "play_dashboard_influx_01" {
-  type = "string"
   value = resource.grafana_dashboard.play-dashboard-influx-01
 }
 # provision dashboard
@@ -61,7 +60,6 @@ resource "grafana_dashboard" "play-dashboard-influx-02" {
   folder = grafana_folder.play-folder-influx.id
 }
 output "play_dashboard_influx_02" {
-  type = "string"
   value = resource.grafana_dashboard.play-dashboard-influx-02
 }
 # provision dashboard
