@@ -26,10 +26,8 @@ resource "grafana_data_source" "play-ds-influx" {
 }
 
 output "grafana_data_sources" {
-  value = resource.grafana_data_source.*
-}
-output "grafana_data_sourcesDiff" {
-  value = resource.play-ds-influx
+  sensitive = true
+  value = resource.grafana_data_source.play-ds-influx
 }
 
 # provision folder
@@ -40,7 +38,7 @@ resource "grafana_folder" "play-folder-influx" {
 }
 
 output "grafana_folder" {
-  value = resource.grafana_data_source
+  value = resource.grafana_folder.play-folder-influx
 }
 
 # provision dashboard
