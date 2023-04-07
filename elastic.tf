@@ -82,8 +82,8 @@ resource "grafana_data_source" "play-ds-elastic-03" {
 # provision folder
 resource "grafana_folder" "play-folder-elastic" {
   provider = grafana.play
-
-  title = "elasticsearch"
+  uid   = "play-grafana-elasticsearch"
+  title = "play-grafana-elasticsearch"
 }
 
 # provision dashboard

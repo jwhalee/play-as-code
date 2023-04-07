@@ -1,6 +1,6 @@
 ###############################################
 ##                                           ##
-## INFLUX datasource, folder, and dashboards ##
+## MySQL datasource, folder, and dashboards  ##
 ##                                           ## 
 ###############################################
 
@@ -43,8 +43,8 @@ resource "grafana_data_source" "play-ds-mysql-02" {
 # provision folder
 resource "grafana_folder" "play-folder-mysql" {
   provider = grafana.play
-
-  title = "MySQL"
+  uid   = "play-grafana-mysql"
+  title = "play-grafana-mysql"
 }
 
 # provision dashboard

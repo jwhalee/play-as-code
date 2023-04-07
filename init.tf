@@ -11,18 +11,6 @@ terraform {
   }
 }
 
-# data "terraform-remote-state" "play" {
-#   backend = "gcs"
-#   config = {
-#     bucket = "play-grafana-tf-config"
-#   }
-# }
-
-# resource "local_file" "tfstate" {
-#   content = data.terraform-remote-state.play
-#   filename = "${path.module}/terraform.tfstate"
-# }
-
 variable "grafana-token" {}
 variable "grafana-url" {}
 

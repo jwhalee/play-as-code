@@ -33,8 +33,8 @@ output "play_ds_influx" {
 # provision folder
 resource "grafana_folder" "play-folder-influx" {
   provider = grafana.play
-
-  title = "influxDB"
+  uid   = "play-grafana-influx"
+  title = "play-grafana-influx"
 }
 
 output "play_folder_influx" {
