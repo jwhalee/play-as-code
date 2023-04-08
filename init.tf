@@ -20,3 +20,10 @@ provider "grafana" {
   url   = "${var.grafana-url}"
   auth  = "${var.grafana-token}"
 }
+
+# provision folder
+resource "grafana_folder" "play-grafana" {
+  provider = grafana.play
+  uid   = "play-grafana"
+  title = "play-grafana"
+}

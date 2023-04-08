@@ -30,15 +30,8 @@ output "play_ds_influx" {
   value = resource.grafana_data_source.play-ds-influx
 }
 
-# provision folder
-resource "grafana_folder" "play-folder-influx" {
-  provider = grafana.play
-  uid   = "play-grafana-influx"
-  title = "play-grafana-influx"
-}
-
-output "play_folder_influx" {
-  value = resource.grafana_folder.play-folder-influx
+output "play_folder" {
+  value = resource.grafana_folder.play-grafana
 }
 
 # provision dashboard
@@ -46,7 +39,7 @@ resource "grafana_dashboard" "play-dashboard-influx-01" {
   provider = grafana.play
 
   config_json = file("dashboards/influx/influx-noaa-buoys.json")
-  folder = grafana_folder.play-folder-influx.id
+  folder = grafana_folder.play-grafana.id
 }
 
 output "play_dashboard_influx_01" {
@@ -57,7 +50,7 @@ resource "grafana_dashboard" "play-dashboard-influx-02" {
   provider = grafana.play
 
   config_json = file("dashboards/influx/influx-usgs-earthquakes.json")
-  folder = grafana_folder.play-folder-influx.id
+  folder = grafana_folder.play-grafana.id
 }
 output "play_dashboard_influx_02" {
   value = resource.grafana_dashboard.play-dashboard-influx-02
@@ -67,7 +60,7 @@ resource "grafana_dashboard" "play-dashboard-influx-03" {
   provider = grafana.play
 
   config_json = file("dashboards/influx/influx-water-samples.json")
-  folder = grafana_folder.play-folder-influx.id
+  folder = grafana_folder.play-grafana.id
 }
 output "play_dashboard_influx_03" {
   value = resource.grafana_dashboard.play-dashboard-influx-03
@@ -77,7 +70,7 @@ resource "grafana_dashboard" "play-dashboard-influx-04" {
   provider = grafana.play
 
   config_json = file("dashboards/influx/influx-internal-metrics.json")
-  folder = grafana_folder.play-folder-influx.id
+  folder = grafana_folder.play-grafana.id
 }
 output "play_dashboard_influx_04" {
   value = resource.grafana_dashboard.play-dashboard-influx-04

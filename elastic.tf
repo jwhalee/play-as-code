@@ -79,19 +79,19 @@ resource "grafana_data_source" "play-ds-elastic-03" {
   })
 }
 
-# provision folder
-resource "grafana_folder" "play-folder-elastic" {
-  provider = grafana.play
-  uid   = "play-grafana-elasticsearch"
-  title = "play-grafana-elasticsearch"
-}
+# # provision folder
+# resource "grafana_folder" "play-folder-elastic" {
+#   provider = grafana.play
+#   uid   = "play-grafana-elasticsearch"
+#   title = "play-grafana-elasticsearch"
+# }
 
 # provision dashboard
 resource "grafana_dashboard" "play-dashboard-elastic-01" {
   provider = grafana.play
 
   config_json = file("dashboards/elastic/elastic-ecommerce-data.json")
-  folder = grafana_folder.play-folder-elastic.id
+  folder = grafana_folder.play-grafana.id
 }
 
 # provision dashboard
@@ -99,7 +99,7 @@ resource "grafana_dashboard" "play-dashboard-elastic-02" {
   provider = grafana.play
 
   config_json = file("dashboards/elastic/elastic-flight-data.json")
-  folder = grafana_folder.play-folder-elastic.id
+  folder = grafana_folder.play-grafana.id
 }
 
 # provision dashboard
@@ -107,5 +107,5 @@ resource "grafana_dashboard" "play-dashboard-elastic-03" {
   provider = grafana.play
 
   config_json = file("dashboards/elastic/elastic-web-logs.json")
-  folder = grafana_folder.play-folder-elastic.id
+  folder = grafana_folder.play-grafana.id
 }
