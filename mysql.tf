@@ -55,10 +55,18 @@ resource "grafana_dashboard" "play-dashboard-mysql-01" {
   folder = grafana_folder.play-grafana.id
 }
 
+output "play_dashboard_mysql_01" {
+  value = resource.grafana_dashboard.play-dashboard-mysql-01
+}
+
 # provision dashboard
 resource "grafana_dashboard" "play-dashboard-mysql-02" {
   provider = grafana.play
 
   config_json = file("dashboards/mysql/mysql-world-cities.json")
   folder = grafana_folder.play-grafana.id
+}
+
+output "play_dashboard_mysql_02" {
+  value = resource.grafana_dashboard.play-dashboard-mysql-02
 }

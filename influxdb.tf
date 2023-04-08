@@ -25,10 +25,10 @@ resource "grafana_data_source" "play-ds-influx" {
   })
 }
 
-output "play_ds_influx" {
-  sensitive = true
-  value = resource.grafana_data_source.play-ds-influx
-}
+# output "play_ds_influx" {
+#   sensitive = true
+#   value = resource.grafana_data_source.play-ds-influx
+# }
 
 # provision dashboard
 resource "grafana_dashboard" "play-dashboard-influx-01" {

@@ -94,6 +94,9 @@ resource "grafana_dashboard" "play-dashboard-elastic-01" {
   folder = grafana_folder.play-grafana.id
 }
 
+output "play_dashboard_elastic_01" {
+  value = resource.grafana_dashboard.play-dashboard-elastic-01
+}
 # provision dashboard
 resource "grafana_dashboard" "play-dashboard-elastic-02" {
   provider = grafana.play
@@ -102,10 +105,18 @@ resource "grafana_dashboard" "play-dashboard-elastic-02" {
   folder = grafana_folder.play-grafana.id
 }
 
+output "play_dashboard_elastic_02" {
+  value = resource.grafana_dashboard.play-dashboard-elastic-02
+}
+
 # provision dashboard
 resource "grafana_dashboard" "play-dashboard-elastic-03" {
   provider = grafana.play
 
   config_json = file("dashboards/elastic/elastic-web-logs.json")
   folder = grafana_folder.play-grafana.id
+}
+
+output "play_dashboard_elastic_03" {
+  value = resource.grafana_dashboard.play-dashboard-elastic-03
 }
