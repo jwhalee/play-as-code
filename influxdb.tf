@@ -30,10 +30,6 @@ output "play_ds_influx" {
   value = resource.grafana_data_source.play-ds-influx
 }
 
-output "play_folder" {
-  value = resource.grafana_folder.play-grafana
-}
-
 # provision dashboard
 resource "grafana_dashboard" "play-dashboard-influx-01" {
   provider = grafana.play

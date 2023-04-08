@@ -27,3 +27,7 @@ resource "grafana_folder" "play-grafana" {
   uid   = "play-grafana"
   title = "play-grafana"
 }
+
+output "play_folder" {
+  value = resource.grafana_folder.play-grafana
+}
