@@ -14,6 +14,11 @@ g.dashboard.new('Elasticsearch 8: Flight Data')
 + g.dashboard.withUid('play-elastic-flight-data')
 + g.dashboard.withDescription('Elasticsearch flight data')
 + g.dashboard.graphTooltip.withSharedCrosshair()
++ g.dashboard.withTags([
+    "elasticsearch",
+    "play-grafana",
+    "community",
+  ])
 + g.dashboard.withTime({
     "from": "2022-08-11T20:58:15.282Z",
     "to": "2022-08-16T00:00:00.000Z"

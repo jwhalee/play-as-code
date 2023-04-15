@@ -5,6 +5,11 @@ g.dashboard.new('Elasticsearch 8: e-Commerce Data')
 + g.dashboard.withUid('play-elastic-ecommerce')
 + g.dashboard.withDescription('es ecommerce data')
 + g.dashboard.graphTooltip.withSharedCrosshair()
++ g.dashboard.withTags([
+    "elasticsearch",
+    "play-grafana",
+    "community",
+  ])
 + g.dashboard.withTime({
     "from": "2022-07-11T20:58:15.282Z",
     "to": "2022-07-13T06:26:47.391Z"

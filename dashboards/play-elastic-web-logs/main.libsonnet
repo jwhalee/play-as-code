@@ -5,6 +5,11 @@ g.dashboard.new('Elasticsearch 8: Web Logs')
 + g.dashboard.withUid('play-elastic-web-logs')
 + g.dashboard.withDescription('es web logs')
 + g.dashboard.graphTooltip.withSharedCrosshair()
++ g.dashboard.withTags([
+    "elasticsearch",
+    "play-grafana",
+    "community",
+  ])
 + g.dashboard.withTime({
     "from": "2022-07-11T20:58:15.282Z",
     "to": "2022-07-13T06:26:47.391Z"
