@@ -1,0 +1,51 @@
+{
+   "description": "es web logs",
+   "graphTooltip": 1,
+   "panels": [
+      {
+         "datasource": "play-elastic-web-logs",
+         "gridPos": {
+            "h": 8,
+            "w": 24
+         },
+         "id": 1,
+         "targets": [
+            {
+               "metrics": [
+                  {
+                     "type": "logs"
+                  }
+               ]
+            }
+         ],
+         "title": "web logs",
+         "type": "logs"
+      },
+      {
+         "datasource": "play-elastic-web-logs",
+         "gridPos": {
+            "h": 8,
+            "w": 24
+         },
+         "id": 2,
+         "targets": [
+            {
+               "metrics": [
+                  {
+                     "type": "logs"
+                  }
+               ]
+            }
+         ],
+         "title": "web logs",
+         "type": "table"
+      }
+   ],
+   "time": {
+      "from": "2022-07-11T20:58:15.282Z",
+      "to": "2022-07-13T06:26:47.391Z"
+   },
+   "timezone": "utc",
+   "title": "ES web logs",
+   "uid": "play-elastic-web-logs"
+}
