@@ -1,5 +1,5 @@
 {
-   "description": "es flight data",
+   "description": "Elasticsearch flight data",
    "graphTooltip": 1,
    "panels": [
       {
@@ -110,6 +110,6 @@
       "to": "2022-08-16T00:00:00.000Z"
    },
    "timezone": "utc",
-   "title": "ES flight data",
+   "title": "Elasticsearch 8: Flight Data",
    "uid": "play-elastic-flight-data"
 }

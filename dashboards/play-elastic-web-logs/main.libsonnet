@@ -1,7 +1,7 @@
 // dashboard.jsonnet
 local g = import 'github.com/grafana/grafonnet/gen/grafonnet-latest/main.libsonnet';
 
-g.dashboard.new('ES web logs')
+g.dashboard.new('Elasticsearch 8: Web Logs')
 + g.dashboard.withUid('play-elastic-web-logs')
 + g.dashboard.withDescription('es web logs')
 + g.dashboard.graphTooltip.withSharedCrosshair()

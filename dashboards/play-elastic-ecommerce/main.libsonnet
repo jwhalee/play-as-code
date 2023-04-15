@@ -1,7 +1,7 @@
 // dashboard.jsonnet
 local g = import 'github.com/grafana/grafonnet/gen/grafonnet-latest/main.libsonnet';
 
-g.dashboard.new('ES e-commerce data')
+g.dashboard.new('Elasticsearch 8: e-Commerce Data')
 + g.dashboard.withUid('play-elastic-ecommerce')
 + g.dashboard.withDescription('es ecommerce data')
 + g.dashboard.graphTooltip.withSharedCrosshair()

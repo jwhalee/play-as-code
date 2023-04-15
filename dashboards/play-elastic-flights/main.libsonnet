@@ -10,9 +10,9 @@ local custom = geomap.fieldConfig.defaults.custom;
 local override = geomap.fieldConfig.overrides;
 local options = geomap.options;
 
-g.dashboard.new('ES flight data')
+g.dashboard.new('Elasticsearch 8: Flight Data')
 + g.dashboard.withUid('play-elastic-flight-data')
-+ g.dashboard.withDescription('es flight data')
++ g.dashboard.withDescription('Elasticsearch flight data')
 + g.dashboard.graphTooltip.withSharedCrosshair()
 + g.dashboard.withTime({
     "from": "2022-08-11T20:58:15.282Z",
