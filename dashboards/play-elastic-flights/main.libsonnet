@@ -11,7 +11,7 @@ local override = geomap.fieldConfig.overrides;
 local options = geomap.options;
 
 g.dashboard.new('ES flight data')
-+ g.dashboard.withUid('play-elastic-flights')
++ g.dashboard.withUid('play-elastic-flight-data')
 + g.dashboard.withDescription('es flight data')
 + g.dashboard.graphTooltip.withSharedCrosshair()
 + g.dashboard.withTime({
