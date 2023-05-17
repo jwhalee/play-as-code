@@ -1,5 +1,0 @@
-grafana-url      = "<your-grafana-url>"
-grafana-token    = "<your-grafana-cloud-token>"
-influx-token     = "<play-influx-token>"
-elastic-paswoord = "<play-elastic-password>"
-mysql-password   = "<play-mysql-password>"
