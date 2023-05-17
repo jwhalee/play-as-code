@@ -1,0 +1,4 @@
+# azureMonitor
+
+grafonnet.query.azureMonitor
+

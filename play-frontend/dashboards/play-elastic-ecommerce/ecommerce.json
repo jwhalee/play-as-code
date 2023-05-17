@@ -1,0 +1,37 @@
+{
+   "description": "es ecommerce data",
+   "graphTooltip": 1,
+   "panels": [
+      {
+         "datasource": "play-elastic-ecommerce",
+         "gridPos": {
+            "h": 8,
+            "w": 24
+         },
+         "id": 1,
+         "targets": [
+            {
+               "metrics": [
+                  {
+                     "type": "raw_data"
+                  }
+               ]
+            }
+         ],
+         "title": "ecommerce data",
+         "type": "table"
+      }
+   ],
+   "tags": [
+      "elasticsearch",
+      "play-grafana",
+      "community"
+   ],
+   "time": {
+      "from": "2022-07-11T20:58:15.282Z",
+      "to": "2022-07-13T06:26:47.391Z"
+   },
+   "timezone": "utc",
+   "title": "Elasticsearch 8: e-Commerce Data",
+   "uid": "play-elastic-ecommerce"
+}
