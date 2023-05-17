@@ -90,7 +90,7 @@ resource "grafana_data_source" "play-ds-elastic-03" {
 resource "grafana_dashboard" "play-dashboard-elastic-01" {
   provider = grafana.play
 
-  config_json = file("dashboards/play-elastic-ecommerce/ecommerce.json")
+  config_json = file("dashboards/elastic/ecommerce.json")
   folder = grafana_folder.play-grafana.id
 }
 
@@ -101,7 +101,7 @@ output "play_dashboard_elastic_01" {
 resource "grafana_dashboard" "play-dashboard-elastic-02" {
   provider = grafana.play
 
-  config_json = file("dashboards/play-elastic-flights/flights.json")
+  config_json = file("dashboards/elastic/flights.json")
   folder = grafana_folder.play-grafana.id
 }
 
@@ -113,7 +113,7 @@ output "play_dashboard_elastic_02" {
 resource "grafana_dashboard" "play-dashboard-elastic-03" {
   provider = grafana.play
 
-  config_json = file("dashboards/play-elastic-web-logs/logs.json")
+  config_json = file("dashboards/elastic/logs.json")
   folder = grafana_folder.play-grafana.id
 }
 
