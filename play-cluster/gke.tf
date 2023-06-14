@@ -49,7 +49,7 @@ resource "google_container_node_pool" "primary_nodes" {
     }
 
     # preemptible  = true
-    machine_type = "n1-standard-1"
+    machine_type = "n1-highmem-2"
     tags         = ["gke-node", "${var.project_id}-play-grafana-gke"]
     metadata = {
       disable-legacy-endpoints = "true"
@@ -57,23 +57,65 @@ resource "google_container_node_pool" "primary_nodes" {
   }
 }
 
+resource "google_compute_address" "cluster_ip" {
+  name   = "cluster-ip"
+  region = "us-central1"
+}
 
-# # Kubernetes provider
-# # The Terraform Kubernetes Provider configuration below is used as a learning reference only. 
-# # It references the variables and resources provisioned in this file. 
-# # We recommend you put this in another file -- so you can have a more modular configuration.
-# # https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster#optional-configure-terraform-kubernetes-provider
-# # To learn how to schedule deployments and services using the provider, go here: https://learn.hashicorp.com/tutorials/terraform/kubernetes-provider.
+resource "google_compute_address" "play_influx_ip" {
+  name   = "play-influx-ip"
+  region = "us-central1"
+}
 
+resource "google_compute_address" "play_opentsdb_ip" {
+  name   = "play-opentsdb-ip"
+  region = "us-central1"
+}
+
+resource "google_compute_address" "play_dev_ip" {
+  name   = "play-dev-ip"
+  region = "us-central1"
+}
+
+resource "google_compute_address" "play_elastic_ip" {
+  name   = "play-elastic-ip"
+  region = "us-central1"
+}
+
+resource "google_compute_address" "play_kibana_ip" {
+  name   = "play-kibana-ip"
+  region = "us-central1"
+}
+
+# # Copyright (c) HashiCorp, Inc.
+# # SPDX-License-Identifier: MPL-2.0
+
+# terraform {
+#   backend "gcs" {
+#     bucket = "play-cluster-tf-config"
+#   }  
+#   required_providers {
+#     google = {
+#       source  = "hashicorp/google"
+#       version = "4.27.0"
+#     }
+#     kubernetes = {
+#       source  = "hashicorp/kubernetes"
+#       version = ">= 2.0.1"
+#     }
+#   }
+
+#   required_version = ">= 0.14"
+# }
+
+# data "google_client_config" "default" {}
+# data "google_container_cluster" "play_grafana" {
+#   name     = "raintank-dev-play-grafana-gke"
+#   location = "us-central1"
+# }
 # provider "kubernetes" {
-#   load_config_file = "false"
-
-#   host     = google_container_cluster.primary.endpoint
-#   username = var.gke_username
-#   password = var.gke_password
-
-#   client_certificate     = google_container_cluster.primary.master_auth.0.client_certificate
-#   client_key             = google_container_cluster.primary.master_auth.0.client_key
-#   cluster_ca_certificate = google_container_cluster.primary.master_auth.0.cluster_ca_certificate
+#   host                   = "https://34.135.210.219"
+#   token                  = data.google_client_config.default.access_token
+#   cluster_ca_certificate = base64decode(data.google_container_cluster.play_grafana.master_auth[0].cluster_ca_certificate)
 # }
 

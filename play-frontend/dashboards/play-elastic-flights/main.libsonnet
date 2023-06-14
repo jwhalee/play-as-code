@@ -20,8 +20,8 @@ g.dashboard.new('Elasticsearch 8: Flight Data')
     "community",
   ])
 + g.dashboard.withTime({
-    "from": "2022-08-11T20:58:15.282Z",
-    "to": "2022-08-16T00:00:00.000Z"
+    "from": "now-6h",
+    "to": "now"
   })
 + g.dashboard.withPanels([
   panels.geomap.base('flight data: geomap', queries.rawData),

@@ -111,8 +111,8 @@
       "community"
    ],
    "time": {
-      "from": "2022-08-11T20:58:15.282Z",
-      "to": "2022-08-16T00:00:00.000Z"
+      "from": "now-6h",
+      "to": "now"
    },
    "timezone": "utc",
    "title": "Elasticsearch 8: Flight Data",

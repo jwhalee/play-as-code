@@ -1,0 +1,14 @@
+# not currently in use. passing in env vars instead
+
+# cluster.name: "docker-cluster"
+# network.host: 0.0.0.0
+
+
+
+#         # - env:
+#         #     - name: discovery.type
+#         #       value: single-node
+#         #     - name: xpack.license.self_generated.type
+#         #       value: basic
+#         #     - name: xpack.security.enabled
+#         #       value: "false"

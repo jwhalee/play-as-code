@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: fake-opentsdb-data
+  name: fake-opentsdb-data
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: fake-opentsdb-data
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.28.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/opentsdb-default: "true"
+        io.kompose.service: fake-opentsdb-data
+    spec:
+      containers:
+        - env:
+            - name: FD_DATASOURCE
+              value: opentsdb
+            - name: FD_PORT
+              value: "4242"
+          image: grafana/fake-data-gen
+          name: fake-opentsdb-data
+          resources: {}
+      restartPolicy: Always
+status: {}

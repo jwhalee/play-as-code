@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: fake-graphite11-data
+  name: fake-graphite11-data
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: fake-graphite11-data
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.28.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/graphite-default: "true"
+        io.kompose.service: fake-graphite11-data
+    spec:
+      containers:
+        - env:
+            - name: FD_DATASOURCE
+              value: graphite
+            - name: FD_GRAPHITE_VERSION
+              value: "1.1"
+            - name: FD_PORT
+              value: "2103"
+          image: grafana/fake-data-gen
+          name: fake-graphite11-data
+          resources: {}
+      restartPolicy: Always
+status: {}
