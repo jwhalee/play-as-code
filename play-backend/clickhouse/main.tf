@@ -27,7 +27,7 @@ resource "kubernetes_deployment" "deployment_clickhouse" {
       }
       spec {
         container {
-          image = "clickhouse/clickhouse-server:${clickhouse_version}"
+          image = "clickhouse/clickhouse-server:${var.clickhouse_version}"
           name = "clickhouse"
           port {
             container_port = 8123
@@ -54,7 +54,7 @@ resource "kubernetes_service" "service_clickhouse" {
         "io.kompose.service" = "clickhouse"
       }
     port {
-      port        = 8123
+      port        = 80
       target_port = 8123
       name        = "8123"
     }

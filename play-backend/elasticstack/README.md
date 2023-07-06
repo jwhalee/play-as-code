@@ -21,3 +21,8 @@ refresh the [kibana UI](https://kibana.grafana.fun). it should work again.
 also needed kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=$(gcloud info --format='value(config.account)')
 
 the k8s roles for elastic agent are not wanting to get ported into HCL so I'm leaving it for now.
+
+### bootstrapping the 3 sample datasets
+
+- go into grafana. click add integration. search for "sample" or "example". Install all three dummy datasets. TODO: can we do this from command line? directly into elastic?
+

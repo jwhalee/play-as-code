@@ -63,11 +63,11 @@ module "influxdb" {
   influxdb_version = var.influxdb_version
 }
 
-module "telegraf" {
-  source           = "./telegraf"
-  namespace        = var.namespace
-  telegraf_version = var.telegraf_version
-}
+# module "telegraf" {
+#   source           = "./telegraf"
+#   namespace        = var.namespace
+#   telegraf_version = var.telegraf_version
+# }
 
 module "mysql" {
   source        = "./mysql"
@@ -94,6 +94,7 @@ module "redis" {
 #   source = "./clickhouse"
 #   cluster_ip = var.cluster_ip
 #   namespace = var.namespace
+#   clickhouse_version = var.clickhouse_version
 # }
 
 module "opentsdb" {
@@ -109,11 +110,12 @@ module "phlare" {
   phlare_version = var.phlare_version
 }
 
-# module "postgres" {
-#   source = "./postgres"
-#   cluster_ip = var.cluster_ip
-#   namespace = var.namespace
-# }
+module "postgres" {
+  source = "./postgres"
+  cluster_ip = var.cluster_ip
+  namespace = var.namespace
+  postgres_version = var.postgres_version
+}
 
 # module "nginx" {
 #   source = "./nginx"

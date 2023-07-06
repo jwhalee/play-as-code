@@ -72,8 +72,13 @@ function checkForDatasets() {
 }
 
 function makeBucket() {
-  BUCKET="$(influx bucket create --name "${1}" --retention 30d)"
-  printf "\n%b\n\n" "creating bucket:\n\n${BUCKET}"
+  if [[ $i =~ noaa-water-sample ]]; then
+    BUCKET="$(influx bucket create --name "${1}")"
+    printf "\n%b\n\n" "creating bucket:\n\n${BUCKET}"
+  else
+    BUCKET="$(influx bucket create --name "${1}" --retention "30d")"
+    printf "\n%b\n\n" "creating bucket:\n\n${BUCKET}"
+  fi
 }
 
 function makeTask() {

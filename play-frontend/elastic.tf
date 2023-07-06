@@ -69,7 +69,7 @@ resource "grafana_data_source" "play-ds-elastic-03" {
     logLevelField              = ""
     logMessageField            = ""
     maxConcurrentShardRequests = 5
-    timeField                  = "timestamp"
+    timeField                  = "@timestamp"
   })
   secure_json_data_encoded = jsonencode({
     basicAuthPassword = "${var.elastic-password}"
@@ -149,6 +149,14 @@ resource "grafana_dashboard" "play-dashboard-elastic-03" {
   provider = grafana.play
 
   config_json = file("dashboards/play-elastic-web-logs/logs.json")
+  folder = grafana_folder.play-grafana.id
+}
+
+# provision dashboard
+resource "grafana_dashboard" "play-dashboard-elastic-04" {
+  provider = grafana.play
+
+  config_json = file("dashboards/elastic/histogram.json")
   folder = grafana_folder.play-grafana.id
 }
 

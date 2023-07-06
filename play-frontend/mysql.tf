@@ -12,7 +12,7 @@ resource "grafana_data_source" "play-ds-mysql-01" {
 
   type          = "mysql"
   name          = "play-mysql-world"
-  url           = "35.224.58.170"
+  url           = "34.133.99.59:3306"
   uid           = "play-mysql-world"
   username      = "grafanaReadOnly"
   json_data_encoded = jsonencode({
@@ -29,7 +29,7 @@ resource "grafana_data_source" "play-ds-mysql-02" {
 
   type          = "mysql"
   name          = "play-mysql-sakila"
-  url           = "35.224.58.170"
+  url           = "34.133.99.59:3306"
   uid           = "play-mysql-sakila"
   username      = "grafanaReadOnly"
   json_data_encoded = jsonencode({
