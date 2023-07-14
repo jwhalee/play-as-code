@@ -66,7 +66,7 @@ resource "kubernetes_deployment" "deployment_influxdb" {
             }
           resources {}
           volume_mount {
-              mount_path = "/var/lib/influxdb"
+              mount_path = "/var/lib/influxdb2"
               name = "influx-data"
           }
           volume_mount {
