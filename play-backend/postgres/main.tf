@@ -1,7 +1,7 @@
 resource "kubernetes_deployment" "deployment_postgresdb" {
   metadata {
     name = "postgresdb"
-    namespace = var.namespace
+    namespace = var.namespace-prod
     labels = {
       app = "postgresdb"
     }
@@ -58,7 +58,7 @@ resource "kubernetes_deployment" "deployment_postgresdb" {
 resource "kubernetes_config_map_v1" "postgresdb-configmap" {
   metadata {
     name = "postgresdb-configmap"
-    namespace = var.namespace
+    namespace = var.namespace-prod
     # labels = {
     #   app = "postgresdb"
     # }
@@ -80,7 +80,7 @@ resource "kubernetes_service" "service_postgresdb" {
         app = "postgresdb"
       }
     name = "postgresdb"
-    namespace = var.namespace
+    namespace = var.namespace-prod
   }
   spec {
     selector = {

@@ -41,22 +41,18 @@ resource "grafana_data_source" "play-ds-mysql-02" {
 }
 
 # provision folder
-# resource "grafana_folder" "play-folder-mysql" {
-#   provider = grafana.play
-#   uid   = "play-grafana-mysql"
-#   title = "play-grafana-mysql"
-# }
+resource "grafana_folder" "play-folder-mysql" {
+  provider = grafana.play
+  uid   = "demo-mysql"
+  title = "Demo: MySQL 8"
+}
 
 # provision dashboard
 resource "grafana_dashboard" "play-dashboard-mysql-01" {
   provider = grafana.play
 
   config_json = file("dashboards/mysql/mysql-sakila.json")
-  folder = grafana_folder.play-grafana.id
-}
-
-output "play_dashboard_mysql_01" {
-  value = resource.grafana_dashboard.play-dashboard-mysql-01
+  folder = grafana_folder.play-folder-mysql.id
 }
 
 # provision dashboard
@@ -64,9 +60,13 @@ resource "grafana_dashboard" "play-dashboard-mysql-02" {
   provider = grafana.play
 
   config_json = file("dashboards/mysql/mysql-world-cities.json")
-  folder = grafana_folder.play-grafana.id
+  folder = grafana_folder.play-folder-mysql.id
 }
 
-output "play_dashboard_mysql_02" {
-  value = resource.grafana_dashboard.play-dashboard-mysql-02
-}
+# output "play_dashboard_mysql_02" {
+#   value = resource.grafana_dashboard.play-dashboard-mysql-02
+# }
+
+# output "play_dashboard_mysql_01" {
+#   value = resource.grafana_dashboard.play-dashboard-mysql-01
+# }

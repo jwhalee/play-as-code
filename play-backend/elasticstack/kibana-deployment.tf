@@ -7,7 +7,7 @@ resource "kubernetes_manifest" "deployment_kibana" {
         "io.kompose.service" = "kibana"
       }
       "name" = "kibana"
-      "namespace" = "matt-sandbox"
+      "namespace" = var.namespace-prod
     }
     "spec" = {
       "replicas" = 1

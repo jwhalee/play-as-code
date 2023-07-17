@@ -1,7 +1,7 @@
 resource "kubernetes_config_map_v1" "mysql-configmap" {
   metadata {
     name = "mysql-setup"
-    namespace = var.namespace
+    namespace = var.namespace-prod
     labels = {
       "io.kompose.service" = "mysql"
     }
@@ -18,7 +18,7 @@ resource "kubernetes_deployment" "deployment_mysql" {
         "io.kompose.service" = "mysql"
       }
       name = "mysql"
-      namespace = var.namespace
+      namespace = var.namespace-prod
     }
   spec {
     replicas = 1
@@ -98,7 +98,7 @@ resource "kubernetes_service" "service_mysql" {
         "io.kompose.service" = "mysql"
       }
     name = "mysql"
-    namespace = var.namespace
+    namespace = var.namespace-prod
   }
   spec {
     selector = {

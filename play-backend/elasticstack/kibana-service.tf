@@ -4,7 +4,7 @@ resource "kubernetes_service" "service_kibana" {
         "io.kompose.service" = "kibana"
       }
     name = "kibana"
-    namespace = var.namespace
+    namespace = var.namespace-prod
   }
   spec {
     selector = {

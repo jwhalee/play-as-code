@@ -1,7 +1,7 @@
 resource "kubernetes_deployment" "deployment_clickhouse" {
   metadata {
     name = "clickhouse"
-    namespace = var.namespace
+    namespace = var.namespace-prod
     labels = {
       "io.kompose.service" = "clickhouse"
     }
@@ -47,7 +47,7 @@ resource "kubernetes_service" "service_clickhouse" {
         "io.kompose.service" = "clickhouse"
       }
     name = "clickhouse"
-    namespace = var.namespace
+    namespace = var.namespace-prod
   }
   spec {
     selector = {
@@ -58,7 +58,7 @@ resource "kubernetes_service" "service_clickhouse" {
       target_port = 8123
       name        = "8123"
     }
-    load_balancer_ip = var.cluster_ip
+    load_balancer_ip = var.play_clickhouse_ip
 
     type = "LoadBalancer"
   }

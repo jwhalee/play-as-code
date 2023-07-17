@@ -1,0 +1,120 @@
+{
+   "description": "Elasticsearch flight data",
+   "graphTooltip": 1,
+   "panels": [
+      {
+         "datasource": "play-elastic-flights",
+         "gridPos": {
+            "h": 8,
+            "w": 24
+         },
+         "id": 1,
+         "interval": "1m",
+         "options": {
+            "basemap": {
+               "config": "{}",
+               "name": "base",
+               "type": "default"
+            },
+            "layers": [
+               {
+                  "config": { },
+                  "filterData": {
+                     "id": "byRefId",
+                     "options": "A"
+                  },
+                  "location": {
+                     "latitude": "DestLocation.lat",
+                     "longitude": "DestLocation.lon",
+                     "mode": "coords"
+                  },
+                  "name": "Layer 0",
+                  "type": "markers"
+               }
+            ],
+            "tooltip": {
+               "mode": "details"
+            }
+         },
+         "targets": [
+            {
+               "metrics": [
+                  {
+                     "type": "raw_data"
+                  }
+               ]
+            }
+         ],
+         "title": "flight data: geomap",
+         "transformations": [
+            {
+               "id": "convertFieldType",
+               "options": {
+                  "conversions": [
+                     {
+                        "destinationType": "number",
+                        "targetField": "DestLocation.lat"
+                     },
+                     {
+                        "destinationType": "number",
+                        "targetField": "DestLocation.lon"
+                     }
+                  ],
+                  "fields": { }
+               }
+            }
+         ],
+         "type": "geomap"
+      },
+      {
+         "datasource": "play-elastic-flights",
+         "gridPos": {
+            "h": 8,
+            "w": 24
+         },
+         "id": 2,
+         "interval": "1m",
+         "targets": [
+            {
+               "metrics": [
+                  {
+                     "type": "raw_data"
+                  }
+               ]
+            }
+         ],
+         "title": "flight data: table",
+         "transformations": [
+            {
+               "id": "convertFieldType",
+               "options": {
+                  "conversions": [
+                     {
+                        "destinationType": "number",
+                        "targetField": "DestLocation.lat"
+                     },
+                     {
+                        "destinationType": "number",
+                        "targetField": "DestLocation.lon"
+                     }
+                  ],
+                  "fields": { }
+               }
+            }
+         ],
+         "type": "table"
+      }
+   ],
+   "tags": [
+      "elasticsearch",
+      "play-grafana",
+      "community"
+   ],
+   "time": {
+      "from": "now-6h",
+      "to": "now"
+   },
+   "timezone": "utc",
+   "title": "Elasticsearch 8: Flight Data",
+   "uid": "play-elastic-flight-data"
+}

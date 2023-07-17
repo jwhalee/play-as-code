@@ -1,7 +1,7 @@
 resource "kubernetes_config_map_v1" "kibana-configmap" {
   metadata {
     name = "kibana-configmap"
-    namespace = var.namespace
+    namespace = var.namespace-prod
   }
 
   data = {

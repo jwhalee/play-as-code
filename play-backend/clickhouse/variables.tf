@@ -1,3 +1,3 @@
-variable "cluster_ip" {}
-variable "namespace" {}
+variable "play_clickhouse_ip" {}
+variable "namespace-prod" {}
 variable "clickhouse_version" {}

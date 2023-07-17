@@ -25,7 +25,7 @@
       {
         "datasource": {
           "type": "opentsdb",
-          "uid": "c094061b-de6c-4cc3-b601-f0c4735e0084"
+          "uid": "play-opentsdb"
         },
         "fieldConfig": {
           "defaults": {
@@ -103,7 +103,7 @@
             "aggregator": "sum",
             "datasource": {
               "type": "opentsdb",
-              "uid": "c094061b-de6c-4cc3-b601-f0c4735e0084"
+              "uid": "play-opentsdb"
             },
             "downsampleAggregator": "avg",
             "downsampleFillPolicy": "none",
@@ -117,7 +117,7 @@
       {
         "datasource": {
           "type": "opentsdb",
-          "uid": "c094061b-de6c-4cc3-b601-f0c4735e0084"
+          "uid": "play-opentsdb"
         },
         "fieldConfig": {
           "defaults": {
@@ -195,7 +195,7 @@
             "aggregator": "sum",
             "datasource": {
               "type": "opentsdb",
-              "uid": "c094061b-de6c-4cc3-b601-f0c4735e0084"
+              "uid": "play-opentsdb"
             },
             "downsampleAggregator": "avg",
             "downsampleFillPolicy": "none",

@@ -31,7 +31,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "play-influx"
+          "uid": "play-influx-2-flux"
         },
         "fieldConfig": {
           "defaults": {
@@ -87,7 +87,7 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "play-influx"
+              "uid": "play-influx-2-flux"
             },
             "key": "Q-45586244-0509-4296-b49a-b090e0bf3f03-0",
             "query": "from(bucket: \"noaa-water-sample\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"average_temperature\")\n  |> filter(fn: (r) => r[\"_field\"] == \"degrees\")\n  |> filter(fn: (r) => r[\"location\"] == \"$location\")\n",
@@ -145,7 +145,7 @@
           },
           "datasource": {
             "type": "influxdb",
-            "uid": "play-influx"
+            "uid": "play-influx-2-flux"
           },
           "definition": "from(bucket: \"noaa-water-sample\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"average_temperature\")\n  |> filter(fn: (r) => r[\"_field\"] == \"degrees\")\n  |> unique(column: \"location\")\n  |> map(fn: (r) => ({\n                     foo: r.location,\n                   }))",
           "hide": 0,

@@ -31,8 +31,8 @@
   "panels": [
     {
       "datasource": {
-        "type": "graphite",
-        "uid": "000000001"
+        "type": "grafana-bigquery-datasource",
+        "uid": "play-bigquery"
       },
       "gridPos": {
         "h": 5,
@@ -54,8 +54,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "graphite",
-            "uid": "000000001"
+            "type": "grafana-bigquery-datasource",
+            "uid": "play-bigquery"
           },
           "refId": "A"
         }
@@ -65,8 +65,8 @@
     },
     {
       "datasource": {
-        "type": "graphite",
-        "uid": "000000001"
+        "type": "grafana-bigquery-datasource",
+        "uid": "play-bigquery"
       },
       "gridPos": {
         "h": 2,
@@ -88,8 +88,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "graphite",
-            "uid": "000000001"
+            "type": "grafana-bigquery-datasource",
+            "uid": "play-bigquery"
           },
           "refId": "A"
         }
@@ -100,7 +100,7 @@
     {
       "datasource": {
         "type": "grafana-bigquery-datasource",
-        "uid": "lPrMwAs7k"
+        "uid": "play-bigquery"
       },
       "fieldConfig": {
         "defaults": {
@@ -159,7 +159,7 @@
           "dataset": "",
           "datasource": {
             "type": "grafana-bigquery-datasource",
-            "uid": "lPrMwAs7k"
+            "uid": "play-bigquery"
           },
           "editorMode": "code",
           "format": 1,
@@ -204,8 +204,8 @@
     {
       "collapsed": false,
       "datasource": {
-        "type": "graphite",
-        "uid": "000000001"
+        "type": "grafana-bigquery-datasource",
+        "uid": "play-bigquery"
       },
       "gridPos": {
         "h": 1,
@@ -218,8 +218,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "graphite",
-            "uid": "000000001"
+            "type": "grafana-bigquery-datasource",
+            "uid": "play-bigquery"
           },
           "refId": "A"
         }
@@ -228,8 +228,8 @@
     },
     {
       "datasource": {
-        "type": "graphite",
-        "uid": "000000001"
+        "type": "grafana-bigquery-datasource",
+        "uid": "play-bigquery"
       },
       "gridPos": {
         "h": 2,
@@ -251,8 +251,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "graphite",
-            "uid": "000000001"
+            "type": "grafana-bigquery-datasource",
+            "uid": "play-bigquery"
           },
           "refId": "A"
         }
@@ -411,7 +411,7 @@
     {
       "datasource": {
         "type": "grafana-bigquery-datasource",
-        "uid": "lPrMwAs7k"
+        "uid": "play-bigquery"
       },
       "fieldConfig": {
         "defaults": {
@@ -522,7 +522,7 @@
           "dataset": "",
           "datasource": {
             "type": "grafana-bigquery-datasource",
-            "uid": "lPrMwAs7k"
+            "uid": "play-bigquery"
           },
           "editorMode": "code",
           "format": 1,
@@ -585,8 +585,8 @@
     {
       "collapsed": false,
       "datasource": {
-        "type": "graphite",
-        "uid": "000000001"
+        "type": "grafana-bigquery-datasource",
+        "uid": "play-bigquery"
       },
       "gridPos": {
         "h": 1,
@@ -599,8 +599,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "graphite",
-            "uid": "000000001"
+            "type": "grafana-bigquery-datasource",
+            "uid": "play-bigquery"
           },
           "refId": "A"
         }
@@ -609,8 +609,8 @@
     },
     {
       "datasource": {
-        "type": "graphite",
-        "uid": "000000001"
+        "type": "grafana-bigquery-datasource",
+        "uid": "play-bigquery"
       },
       "gridPos": {
         "h": 2,
@@ -632,8 +632,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "graphite",
-            "uid": "000000001"
+            "type": "grafana-bigquery-datasource",
+            "uid": "play-bigquery"
           },
           "refId": "A"
         }
@@ -644,7 +644,7 @@
     {
       "datasource": {
         "type": "grafana-bigquery-datasource",
-        "uid": "lPrMwAs7k"
+        "uid": "play-bigquery"
       },
       "description": "",
       "fieldConfig": {
@@ -709,7 +709,7 @@
           "dataset": "",
           "datasource": {
             "type": "grafana-bigquery-datasource",
-            "uid": "lPrMwAs7k"
+            "uid": "play-bigquery"
           },
           "editorMode": "code",
           "format": 1,
@@ -993,7 +993,7 @@
       "dataFormat": "tsbuckets",
       "datasource": {
         "type": "grafana-bigquery-datasource",
-        "uid": "lPrMwAs7k"
+        "uid": "play-bigquery"
       },
       "description": "",
       "fieldConfig": {
@@ -1068,7 +1068,7 @@
           "dataset": "",
           "datasource": {
             "type": "grafana-bigquery-datasource",
-            "uid": "lPrMwAs7k"
+            "uid": "play-bigquery"
           },
           "editorMode": "code",
           "format": 1,
@@ -1173,8 +1173,8 @@
     {
       "collapsed": false,
       "datasource": {
-        "type": "graphite",
-        "uid": "000000001"
+        "type": "grafana-bigquery-datasource",
+        "uid": "play-bigquery"
       },
       "gridPos": {
         "h": 1,
@@ -1187,8 +1187,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "graphite",
-            "uid": "000000001"
+            "type": "grafana-bigquery-datasource",
+            "uid": "play-bigquery"
           },
           "refId": "A"
         }
@@ -1197,8 +1197,8 @@
     },
     {
       "datasource": {
-        "type": "graphite",
-        "uid": "000000001"
+        "type": "grafana-bigquery-datasource",
+        "uid": "play-bigquery"
       },
       "gridPos": {
         "h": 2,
@@ -1220,8 +1220,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "graphite",
-            "uid": "000000001"
+            "type": "grafana-bigquery-datasource",
+            "uid": "play-bigquery"
           },
           "refId": "A"
         }
@@ -1232,7 +1232,7 @@
     {
       "datasource": {
         "type": "grafana-bigquery-datasource",
-        "uid": "lPrMwAs7k"
+        "uid": "play-bigquery"
       },
       "fieldConfig": {
         "defaults": {
@@ -1360,7 +1360,7 @@
           "dataset": "",
           "datasource": {
             "type": "grafana-bigquery-datasource",
-            "uid": "lPrMwAs7k"
+            "uid": "play-bigquery"
           },
           "editorMode": "code",
           "format": 1,
@@ -1417,7 +1417,7 @@
     {
       "datasource": {
         "type": "grafana-bigquery-datasource",
-        "uid": "lPrMwAs7k"
+        "uid": "play-bigquery"
       },
       "description": "",
       "fieldConfig": {
@@ -1546,7 +1546,7 @@
           "dataset": "",
           "datasource": {
             "type": "grafana-bigquery-datasource",
-            "uid": "lPrMwAs7k"
+            "uid": "play-bigquery"
           },
           "editorMode": "code",
           "format": 1,
@@ -1603,8 +1603,8 @@
     {
       "collapsed": false,
       "datasource": {
-        "type": "graphite",
-        "uid": "000000001"
+        "type": "grafana-bigquery-datasource",
+        "uid": "play-bigquery"
       },
       "gridPos": {
         "h": 1,
@@ -1617,8 +1617,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "graphite",
-            "uid": "000000001"
+            "type": "grafana-bigquery-datasource",
+            "uid": "play-bigquery"
           },
           "refId": "A"
         }
@@ -1627,8 +1627,8 @@
     },
     {
       "datasource": {
-        "type": "graphite",
-        "uid": "000000001"
+        "type": "grafana-bigquery-datasource",
+        "uid": "play-bigquery"
       },
       "gridPos": {
         "h": 2,
@@ -1645,8 +1645,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "graphite",
-            "uid": "000000001"
+            "type": "grafana-bigquery-datasource",
+            "uid": "play-bigquery"
           },
           "refId": "A"
         }

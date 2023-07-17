@@ -1,2 +1,2 @@
-variable "namespace" {}
+variable "namespace-prod" {}
 variable "ip" {}

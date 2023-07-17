@@ -31,7 +31,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "play-influx"
+          "uid": "play-influx-2-flux"
         },
         "fieldConfig": {
           "defaults": {
@@ -164,7 +164,7 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "play-influx"
+              "uid": "play-influx-2-flux"
             },
             "query": "from(bucket: \"usgs-earthquakes\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  ",
             "refId": "A"

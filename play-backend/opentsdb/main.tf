@@ -1,7 +1,7 @@
 resource "kubernetes_deployment" "deployment_opentsdb" {
   metadata {
     name = "opentsdb"
-    namespace = var.namespace
+    namespace = var.namespace-prod
     labels = {
       "io.kompose.service" = "opentsdb"
     }
@@ -46,7 +46,7 @@ resource "kubernetes_service" "service_opentsdb" {
         "io.kompose.service" = "opentsdb"
       }
     name = "opentsdb"
-    namespace = var.namespace
+    namespace = var.namespace-prod
   }
   spec {
     selector = {

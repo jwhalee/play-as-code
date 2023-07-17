@@ -4,7 +4,7 @@ resource "kubernetes_service" "service_elasticsearch" {
         "io.kompose.service" = "elasticsearch"
       }
     name = "elasticsearch"
-    namespace = var.namespace
+    namespace = var.namespace-prod
   }
   spec {
     selector = {

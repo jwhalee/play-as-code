@@ -1,7 +1,7 @@
 resource "kubernetes_deployment" "deployment_elasticsearch" {
   metadata {
     name = "elasticsearch"
-    namespace = var.namespace
+    namespace = var.namespace-prod
     labels = {
       "io.kompose.service" = "elasticsearch"
     }

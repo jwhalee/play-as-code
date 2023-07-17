@@ -21,13 +21,13 @@ provider "grafana" {
   auth  = "${var.grafana-token}"
 }
 
-# provision folder
-resource "grafana_folder" "play-grafana" {
-  provider = grafana.play
-  uid   = "play-grafana"
-  title = "play-grafana"
-}
+# # provision folder
+# resource "grafana_folder" "play-grafana" {
+#   provider = grafana.play
+#   uid   = "play-grafana"
+#   title = "play-grafana"
+# }
 
-output "play_folder" {
-  value = resource.grafana_folder.play-grafana
-}
+# output "play_folder" {
+#   value = resource.grafana_folder.play-grafana
+# }

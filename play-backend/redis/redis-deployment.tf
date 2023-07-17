@@ -1,7 +1,7 @@
 resource "kubernetes_deployment" "deployment_redis" {
   metadata {
     name = "redis"
-    namespace = var.namespace
+    namespace = var.namespace-prod
     labels = {
       "io.kompose.service" = "redis"
     }

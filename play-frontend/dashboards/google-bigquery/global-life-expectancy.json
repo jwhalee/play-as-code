@@ -30,8 +30,8 @@
   "panels": [
     {
       "datasource": {
-        "type": "graphite",
-        "uid": "000000001"
+        "type": "grafana-bigquery-datasource",
+        "uid": "play-bigquery"
       },
       "gridPos": {
         "h": 4,
@@ -55,8 +55,8 @@
     },
     {
       "datasource": {
-        "type": "graphite",
-        "uid": "000000001"
+        "type": "grafana-bigquery-datasource",
+        "uid": "play-bigquery"
       },
       "gridPos": {
         "h": 3,
@@ -92,8 +92,8 @@
     },
     {
       "datasource": {
-        "type": "graphite",
-        "uid": "000000001"
+        "type": "grafana-bigquery-datasource",
+        "uid": "play-bigquery"
       },
       "gridPos": {
         "h": 3,
@@ -271,7 +271,7 @@
     {
       "datasource": {
         "type": "grafana-bigquery-datasource",
-        "uid": "lPrMwAs7k"
+        "uid": "play-bigquery"
       },
       "gridPos": {
         "h": 12,
@@ -288,7 +288,7 @@
         {
           "datasource": {
             "type": "grafana-bigquery-datasource",
-            "uid": "lPrMwAs7k"
+            "uid": "play-bigquery"
           },
           "editorMode": "code",
           "format": 1,
@@ -341,7 +341,7 @@
     {
       "datasource": {
         "type": "grafana-bigquery-datasource",
-        "uid": "lPrMwAs7k"
+        "uid": "play-bigquery"
       },
       "fieldConfig": {
         "defaults": {
@@ -425,7 +425,7 @@
         {
           "datasource": {
             "type": "grafana-bigquery-datasource",
-            "uid": "lPrMwAs7k"
+            "uid": "play-bigquery"
           },
           "editorMode": "code",
           "format": 1,
@@ -482,7 +482,7 @@
     {
       "datasource": {
         "type": "grafana-bigquery-datasource",
-        "uid": "lPrMwAs7k"
+        "uid": "play-bigquery"
       },
       "fieldConfig": {
         "defaults": {
@@ -563,7 +563,7 @@
         {
           "datasource": {
             "type": "grafana-bigquery-datasource",
-            "uid": "lPrMwAs7k"
+            "uid": "play-bigquery"
           },
           "editorMode": "code",
           "format": 1,
@@ -632,8 +632,8 @@
     },
     {
       "datasource": {
-        "type": "graphite",
-        "uid": "000000001"
+        "type": "grafana-bigquery-datasource",
+        "uid": "play-bigquery"
       },
       "gridPos": {
         "h": 8,
@@ -662,7 +662,7 @@
     {
       "datasource": {
         "type": "grafana-bigquery-datasource",
-        "uid": "lPrMwAs7k"
+        "uid": "play-bigquery"
       },
       "fieldConfig": {
         "defaults": {
@@ -791,7 +791,7 @@
         {
           "datasource": {
             "type": "grafana-bigquery-datasource",
-            "uid": "lPrMwAs7k"
+            "uid": "play-bigquery"
           },
           "editorMode": "code",
           "format": 1,
@@ -857,7 +857,7 @@
         },
         "datasource": {
           "type": "grafana-bigquery-datasource",
-          "uid": "lPrMwAs7k"
+          "uid": "play-bigquery"
         },
         "definition": "",
         "hide": 0,

@@ -31,7 +31,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "play-influx"
+        "uid": "play-influx-2-flux"
       },
       "fieldConfig": {
         "defaults": {
@@ -156,7 +156,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "play-influx"
+            "uid": "play-influx-2-flux"
           },
           "query": "from(bucket: \"noaa-buoys\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"ndbc\")\n  |> filter(fn: (r) => r[\"station_name\"] == \"$stationName\")\n  |> last()\n",
           "refId": "A"
@@ -174,7 +174,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "play-influx"
+        "uid": "play-influx-2-flux"
       },
       "fieldConfig": {
         "defaults": {
@@ -250,7 +250,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "play-influx"
+            "uid": "play-influx-2-flux"
           },
           "query": "from(bucket: \"noaa-buoys\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"ndbc\")\n  |> filter(fn: (r) => r[\"station_name\"] == \"$stationName\")\n  |> filter(fn: (r) => r[\"_field\"] == \"sea_surface_temp_degc\")\n",
           "refId": "A"
@@ -268,7 +268,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "play-influx"
+        "uid": "play-influx-2-flux"
       },
       "fieldConfig": {
         "defaults": {
@@ -372,7 +372,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "play-influx"
+            "uid": "play-influx-2-flux"
           },
           "query": "from(bucket: \"noaa-buoys\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"ndbc\")\n  |> filter(fn: (r) => r[\"station_name\"] == \"$stationName\")\n  |> filter(fn: (r) => r[\"_field\"] == \"sea_surface_temp_degc\")",
           "refId": "A"
@@ -410,7 +410,7 @@
         },
         "datasource": {
           "type": "influxdb",
-          "uid": "play-influx"
+          "uid": "play-influx-2-flux"
         },
         "definition": "from(bucket: \"noaa-buoys\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"ndbc\")\n  |> unique(column: \"station_id\")\n  |> map(fn: (r) => ({\n                     foo: r.station_name,\n                   }))",
         "hide": 0,

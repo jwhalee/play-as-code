@@ -4,7 +4,7 @@ resource "kubernetes_service" "service_redis" {
         "io.kompose.service" = "redis"
       }
     name = "redis"
-    namespace = var.namespace
+    namespace = var.namespace-prod
   }
   spec {
     selector = {

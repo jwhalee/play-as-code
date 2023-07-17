@@ -17,7 +17,7 @@ resource "grafana_data_source" "play-ds-bigquery-01" {
   name                = "Google BigQuery"
   type                = "grafana-bigquery-datasource"
   url                 = ""
-  uid                 = "d30a82c2-6885-4634-afe9-a0dabcda3d0c"
+  uid                 = "play-bigquery"
   json_data_encoded = jsonencode({
     authenticationType = "jwt"
     clientEmail        = "play-grafana-net@chris-analytics-testing.iam.gserviceaccount.com"
@@ -29,24 +29,24 @@ resource "grafana_data_source" "play-ds-bigquery-01" {
   })
 }
 
-# # provision folder
-# resource "grafana_folder" "play-folder-elastic" {
-#   provider = grafana.play
-#   uid   = "play-grafana-elasticsearch"
-#   title = "play-grafana-elasticsearch"
-# }
+# provision folder
+resource "grafana_folder" "play-folder-bigquery" {
+  provider = grafana.play
+  uid   = "demo-bigquery"
+  title = "Demo: BigQuery"
+}
 
-# provision dashboard
+# provision dashboards
 resource "grafana_dashboard" "play-dashboard-bigquery-01" {
   provider = grafana.play
 
   config_json = file("dashboards/google-bigquery/citibike-usage.json")
-  folder = grafana_folder.play-grafana.id
+  folder = grafana_folder.play-folder-bigquery.id
 }
 
 resource "grafana_dashboard" "play-dashboard-bigquery-02" {
   provider = grafana.play
 
   config_json = file("dashboards/google-bigquery/global-life-expectancy.json")
-  folder = grafana_folder.play-grafana.id
+  folder = grafana_folder.play-folder-bigquery.id
 }

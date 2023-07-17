@@ -42,23 +42,23 @@ provider "kubernetes" {
 
 module "elasticstack" {
   source                   = "./elasticstack"
-  namespace                = var.namespace
+  namespace-prod           = var.namespace-prod
   play_elastic_ip          = var.play_elastic_ip
   play_kibana_ip           = var.play_kibana_ip
   play_elastic_domain_name = var.play_elastic_domain_name
   elastic_version          = var.elastic_version
 }
 
-module "grafana" {
-  source          = "./grafana"
-  namespace       = var.namespace
-  play_dev_ip     = var.play_dev_ip
-  grafana_version = var.grafana_version
-}
+# module "grafana" {
+#   source          = "./grafana"
+#   namespace       = var.namespace
+#   play_dev_ip     = var.play_dev_ip
+#   grafana_version = var.grafana_version
+# }
 
 module "influxdb" {
   source           = "./influxdb"
-  namespace        = var.namespace
+  namespace-prod = var.namespace-prod
   play_influx_ip   = var.play_influx_ip
   influxdb_version = var.influxdb_version
 }
@@ -70,50 +70,39 @@ module "influxdb" {
 # }
 
 module "mysql" {
-  source        = "./mysql"
-  cluster_ip    = var.cluster_ip
-  namespace     = var.namespace
-  mysql_version = var.mysql_version
+  source             = "./mysql"
+  cluster_ip         = var.cluster_ip
+  # namespace     = var.namespace
+  namespace-prod     = var.namespace-prod
+  mysql_version      = var.mysql_version
 }
 
 module "redis" {
   source        = "./redis"
   cluster_ip    = var.cluster_ip
-  namespace     = var.namespace
+  namespace-prod     = var.namespace-prod
   redis_version = var.redis_version
 }
 
-# THIS ONE CRASHES ON STARTUP RN
-# module "pyroscope" {
-#   source = "./pyroscope"
-#   cluster_ip = var.cluster_ip
-#   namespace = var.namespace
-# }
-
-# module "clickhouse" {
-#   source = "./clickhouse"
-#   cluster_ip = var.cluster_ip
-#   namespace = var.namespace
-#   clickhouse_version = var.clickhouse_version
-# }
+module "clickhouse" {
+  source             = "./clickhouse"
+  play_clickhouse_ip = var.play_clickhouse_ip
+  # namespace = var.namespace
+  namespace-prod     = var.namespace-prod
+  clickhouse_version = var.clickhouse_version
+}
 
 module "opentsdb" {
   source    = "./opentsdb"
-  namespace = var.namespace
-  ip        = var.play_opentsdb_ip
-}
-
-module "phlare" {
-  source         = "./phlare"
-  cluster_ip     = var.cluster_ip
-  namespace      = var.namespace
-  phlare_version = var.phlare_version
+  # namespace = var.namespace
+  namespace-prod = var.namespace-prod
+  ip             = var.play_opentsdb_ip
 }
 
 module "postgres" {
   source = "./postgres"
   cluster_ip = var.cluster_ip
-  namespace = var.namespace
+  namespace-prod = var.namespace-prod
   postgres_version = var.postgres_version
 }
 

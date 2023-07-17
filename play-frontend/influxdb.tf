@@ -50,50 +50,64 @@ resource "grafana_data_source" "play-ds-influx-influxql" {
   })
 }
 
-
-# output "play_ds_influx-flux" {
-#   sensitive = true
-#   value = resource.grafana_data_source.play-ds-influx-flux
-# }
+# provision folder
+resource "grafana_folder" "play-folder-influx" {
+  provider = grafana.play
+  uid   = "demo-influxdb2"
+  title = "Demo: InfluxDB 2"
+}
 
 # provision dashboard
 resource "grafana_dashboard" "play-dashboard-influx-01" {
   provider = grafana.play
 
   config_json = file("dashboards/influx/influx-noaa-buoys.json")
-  folder = grafana_folder.play-grafana.id
+  folder = grafana_folder.play-folder-influx.id
 }
 
-output "play_dashboard_influx_01" {
-  value = resource.grafana_dashboard.play-dashboard-influx-01
-}
+
 # provision dashboard
 resource "grafana_dashboard" "play-dashboard-influx-02" {
   provider = grafana.play
 
   config_json = file("dashboards/influx/influx-usgs-earthquakes.json")
-  folder = grafana_folder.play-grafana.id
+  folder = grafana_folder.play-folder-influx.id
 }
-output "play_dashboard_influx_02" {
-  value = resource.grafana_dashboard.play-dashboard-influx-02
-}
+
 # provision dashboard
 resource "grafana_dashboard" "play-dashboard-influx-03" {
   provider = grafana.play
 
   config_json = file("dashboards/influx/influx-water-samples.json")
-  folder = grafana_folder.play-grafana.id
+  folder = grafana_folder.play-folder-influx.id
 }
-output "play_dashboard_influx_03" {
-  value = resource.grafana_dashboard.play-dashboard-influx-03
-}
+
 # provision dashboard
 resource "grafana_dashboard" "play-dashboard-influx-04" {
   provider = grafana.play
 
   config_json = file("dashboards/influx/influx-internal-metrics.json")
-  folder = grafana_folder.play-grafana.id
+  folder = grafana_folder.play-folder-influx.id
 }
-output "play_dashboard_influx_04" {
-  value = resource.grafana_dashboard.play-dashboard-influx-04
-}
+
+# outputs
+# output "play_ds_influx-flux" {
+#   sensitive = true
+#   value = resource.grafana_data_source.play-ds-influx-flux
+# }
+
+# output "play_dashboard_influx_01" {
+#   value = resource.grafana_dashboard.play-dashboard-influx-01
+# }
+
+# output "play_dashboard_influx_02" {
+#   value = resource.grafana_dashboard.play-dashboard-influx-02
+# }
+
+# output "play_dashboard_influx_03" {
+#   value = resource.grafana_dashboard.play-dashboard-influx-03
+# }
+
+# output "play_dashboard_influx_04" {
+#   value = resource.grafana_dashboard.play-dashboard-influx-04
+# }

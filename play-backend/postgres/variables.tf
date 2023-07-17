@@ -1,3 +1,3 @@
 variable "cluster_ip" {}
-variable "namespace" {}
+variable "namespace-prod" {}
 variable "postgres_version" {}

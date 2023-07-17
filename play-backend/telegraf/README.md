@@ -1,3 +1,0 @@
-# influxdb & telegraf
-
-todo

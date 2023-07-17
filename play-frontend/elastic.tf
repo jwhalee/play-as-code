@@ -121,35 +121,36 @@ resource "grafana_data_source" "play-ds-elastic-05" {
     basicAuthPassword = "${var.elastic-password}"
   })
 }
-# # provision folder
-# resource "grafana_folder" "play-folder-elastic" {
-#   provider = grafana.play
-#   uid   = "play-grafana-elasticsearch"
-#   title = "play-grafana-elasticsearch"
-# }
+
+# provision folder
+resource "grafana_folder" "play-folder-elastic" {
+  provider = grafana.play
+  uid   = "demo-elasticsearch"
+  title = "Demo: Elasticsearch"
+}
 
 # provision dashboard
 resource "grafana_dashboard" "play-dashboard-elastic-01" {
   provider = grafana.play
 
-  config_json = file("dashboards/play-elastic-ecommerce/ecommerce.json")
-  folder = grafana_folder.play-grafana.id
+  config_json = file("dashboards/elastic/ecommerce.json")
+  folder = grafana_folder.play-folder-elastic.id
 }
 
 # provision dashboard
 resource "grafana_dashboard" "play-dashboard-elastic-02" {
   provider = grafana.play
 
-  config_json = file("dashboards/play-elastic-flights/flights.json")
-  folder = grafana_folder.play-grafana.id
+  config_json = file("dashboards/elastic/flights.json")
+  folder = grafana_folder.play-folder-elastic.id
 }
 
 # provision dashboard
 resource "grafana_dashboard" "play-dashboard-elastic-03" {
   provider = grafana.play
 
-  config_json = file("dashboards/play-elastic-web-logs/logs.json")
-  folder = grafana_folder.play-grafana.id
+  config_json = file("dashboards/elastic/logs.json")
+  folder = grafana_folder.play-folder-elastic.id
 }
 
 # provision dashboard
@@ -157,17 +158,18 @@ resource "grafana_dashboard" "play-dashboard-elastic-04" {
   provider = grafana.play
 
   config_json = file("dashboards/elastic/histogram.json")
-  folder = grafana_folder.play-grafana.id
+  folder = grafana_folder.play-folder-elastic.id
 }
 
-output "play_dashboard_elastic_03" {
-  value = resource.grafana_dashboard.play-dashboard-elastic-03
-}
+# outputs
+# output "play_dashboard_elastic_03" {
+#   value = resource.grafana_dashboard.play-dashboard-elastic-03
+# }
 
-output "play_dashboard_elastic_01" {
-  value = resource.grafana_dashboard.play-dashboard-elastic-01
-}
+# output "play_dashboard_elastic_01" {
+#   value = resource.grafana_dashboard.play-dashboard-elastic-01
+# }
 
-output "play_dashboard_elastic_02" {
-  value = resource.grafana_dashboard.play-dashboard-elastic-02
-}
+# output "play_dashboard_elastic_02" {
+#   value = resource.grafana_dashboard.play-dashboard-elastic-02
+# }

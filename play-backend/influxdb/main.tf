@@ -1,7 +1,7 @@
 resource "kubernetes_deployment" "deployment_influxdb" {
   metadata {
     name = "influxdb"
-    namespace = var.namespace
+    namespace = var.namespace-prod
     labels = {
       "io.kompose.service" = "influxdb"
     }
@@ -119,7 +119,7 @@ resource "kubernetes_service" "service_influxdb" {
         "io.kompose.service" = "influxdb"
       }
     name = "influxdb"
-    namespace = var.namespace
+    namespace = var.namespace-prod
   }
   spec {
     selector = {
@@ -139,7 +139,7 @@ resource "kubernetes_service" "service_influxdb" {
 resource "kubernetes_config_map_v1" "influxdb-configmap" {
   metadata {
     name = "influxdb-configmap"
-    namespace = var.namespace
+    namespace = var.namespace-prod
   }
 
   data = {
