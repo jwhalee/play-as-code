@@ -95,6 +95,11 @@ resource "google_compute_address" "cluster_ip" {
   region = "us-central1"
 }
 
+resource "google_compute_address" "play_clickhouse_ip" {
+  name   = "play-clickhouse-ip"
+  region = "us-central1"
+}
+
 resource "google_compute_address" "play_influx_ip" {
   name   = "play-influx-ip"
   region = "us-central1"
@@ -124,7 +129,7 @@ resource "kubernetes_persistent_volume_claim" "persistentvolumeclaim_elasticsear
   metadata {
     # don't change the name elasticsearch-data
     name      = "elasticsearch-data"
-    namespace = "matt-sandbox"
+    namespace = "play-backends"
     labels = {
       "io.kompose.service" = "elasticsearch-data"
     }
@@ -162,7 +167,7 @@ resource "kubernetes_persistent_volume_claim" "persistentvolumeclaim_grafana_dat
 resource "kubernetes_persistent_volume_claim" "persistentvolumeclaim_influx_data" {
   metadata {
     name      = "influx-data"
-    namespace = "matt-sandbox"
+    namespace = "play-backends"
     labels = {
       "io.kompose.service" = "influx-data"
     }
@@ -181,7 +186,7 @@ resource "kubernetes_persistent_volume_claim" "persistentvolumeclaim_influx_data
 resource "kubernetes_persistent_volume_claim" "persistentvolumeclaim_opentsdb_data" {
   metadata {
     name      = "opentsdb-data"
-    namespace = "matt-sandbox"
+    namespace = "play-backends"
     labels = {
       "io.kompose.service" = "opentsdb-data"
     }
@@ -200,7 +205,7 @@ resource "kubernetes_persistent_volume_claim" "persistentvolumeclaim_opentsdb_da
 resource "kubernetes_persistent_volume_claim" "persistentvolumeclaim_mysql_data" {
   metadata {
     name      = "mysql-data"
-    namespace = "matt-sandbox"
+    namespace = "play-backends"
     labels = {
       "io.kompose.service" = "mysql-data"
     }
@@ -219,7 +224,7 @@ resource "kubernetes_persistent_volume_claim" "persistentvolumeclaim_mysql_data"
 resource "kubernetes_persistent_volume_claim" "persistentvolumeclaim_postgres_data" {
   metadata {
     name      = "postgres-data"
-    namespace = "matt-sandbox"
+    namespace = "play-backends"
     labels = {
       "io.kompose.service" = "postgres-data"
     }
@@ -238,7 +243,7 @@ resource "kubernetes_persistent_volume_claim" "persistentvolumeclaim_postgres_da
 resource "kubernetes_persistent_volume_claim" "persistentvolumeclaim_redis_data" {
   metadata {
     name      = "redis-data"
-    namespace = "matt-sandbox"
+    namespace = "play-backends"
     labels = {
       "io.kompose.service" = "redis-data"
     }
