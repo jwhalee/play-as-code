@@ -9,7 +9,7 @@ tar -xvf sakila-db.tar.gz
 # batch run commands to set up DB with sakila, world_x, and a readonly user
 mysql -u root -p89024jhk7D3809423hjhj -Bse "SOURCE sakila-db/sakila-schema.sql;SOURCE sakila-db/sakila-data.sql;SOURCE world_x-db/world_x.sql;CREATE USER 'grafanaReadOnly'@'%' IDENTIFIED BY 'contrail-DOCTOR-pique-knit-earn-mean';GRANT SELECT, SHOW VIEW ON *.* TO 'grafanaReadOnly'@'%';FLUSH PRIVILEGES;"
 
-# if you want to run them one ata time from the command line:
+# if you want to run them one at a time from the command line:
 # mysql -u root "-p89024jhk7D3809423hjhj" -e 'SOURCE sakila-db/sakila-schema.sql;' # sakila schema first
 # mysql -u root "-p89024jhk7D3809423hjhj" -e 'SOURCE sakila-db/sakila-data.sql;' # sakila tables second
 # mysql -u root "-p89024jhk7D3809423hjhj" -e 'SOURCE world_x-db/world_x.sql;' # add world_x tables
