@@ -251,7 +251,7 @@
     "timepicker": {},
     "timezone": "",
     "title": "Influx 2.2: Live USGS Earthquake Data",
-    "uid": "influx-earthquake",
+    "uid": "play-influx-earthquake",
     "version": 10,
     "weekStart": ""
   }

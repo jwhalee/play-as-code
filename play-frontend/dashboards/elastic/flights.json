@@ -1,5 +1,6 @@
 {
    "description": "Elasticsearch flight data",
+   "editable": true,
    "graphTooltip": 1,
    "panels": [
       {

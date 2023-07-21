@@ -1,5 +1,6 @@
 {
    "description": "es web logs",
+   "editable": true,
    "graphTooltip": 1,
    "panels": [
       {

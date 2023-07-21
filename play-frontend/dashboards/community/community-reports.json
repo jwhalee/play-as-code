@@ -1,0 +1,1452 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "description": "community.grafana.com",
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1805,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "graphite",
+          "uid": "000000001"
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 16,
+          "x": 0,
+          "y": 0
+        },
+        "id": 6,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "## These are graphs of the built-in reports [found here in the discourse admin section](https://community.grafana.com/admin/dashboard/reports)\n\n#### All reports are set to \"All Categories\" whereever possible (We should make this dynamic in the future).",
+          "mode": "markdown"
+        },
+        "pluginVersion": "10.0.2-cloud.1.94a6f396",
+        "title": "Panel Title",
+        "type": "text"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 4
+        },
+        "id": 4,
+        "panels": [
+          {
+            "datasource": {
+              "type": "grafana-discourse-datasource",
+              "uid": "play-discourse"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 1
+            },
+            "id": 2,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "category": "All categories",
+                "datasource": {
+                  "type": "grafana-discourse-datasource",
+                  "uid": "play-discourse"
+                },
+                "getPaginated": false,
+                "period": "monthly",
+                "queryType": "report",
+                "refId": "A",
+                "reportName": "accepted_solutions.json",
+                "searchArea": "topics_posts",
+                "searchAuthor": "",
+                "searchCategory": "",
+                "searchDate": "",
+                "searchPosted": "",
+                "searchQuery": "",
+                "searchSort": "latest",
+                "searchStatus": "",
+                "searchTag": "",
+                "tag": "",
+                "tagQuery": "",
+                "userQuery": "topPublicUsers"
+              }
+            ],
+            "title": "All Categories",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Accepted Solutions",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 5
+        },
+        "id": 11,
+        "panels": [
+          {
+            "datasource": {
+              "type": "grafana-discourse-datasource",
+              "uid": "play-discourse"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 2
+            },
+            "id": 9,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "category": "All categories",
+                "datasource": {
+                  "type": "grafana-discourse-datasource",
+                  "uid": "play-discourse"
+                },
+                "getPaginated": false,
+                "period": "monthly",
+                "queryType": "report",
+                "refId": "A",
+                "reportName": "page_view_anon_reqs.json",
+                "searchArea": "topics_posts",
+                "searchAuthor": "",
+                "searchCategory": "",
+                "searchDate": "",
+                "searchPosted": "",
+                "searchQuery": "",
+                "searchSort": "latest",
+                "searchStatus": "",
+                "searchTag": "",
+                "tag": "",
+                "tagQuery": "",
+                "userQuery": "topPublicUsers"
+              }
+            ],
+            "title": "Anonymous Page Views (no account)",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Anonymous Page Views : No Account",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 6
+        },
+        "id": 13,
+        "panels": [
+          {
+            "datasource": {
+              "type": "grafana-discourse-datasource",
+              "uid": "play-discourse"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 3
+            },
+            "id": 7,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "category": "All categories",
+                "datasource": {
+                  "type": "grafana-discourse-datasource",
+                  "uid": "play-discourse"
+                },
+                "getPaginated": false,
+                "period": "monthly",
+                "queryType": "report",
+                "refId": "A",
+                "reportName": "consolidated_page_views.json",
+                "searchArea": "topics_posts",
+                "searchAuthor": "",
+                "searchCategory": "",
+                "searchDate": "",
+                "searchPosted": "",
+                "searchQuery": "",
+                "searchSort": "latest",
+                "searchStatus": "",
+                "searchTag": "",
+                "tag": "",
+                "tagQuery": "",
+                "userQuery": "topPublicUsers"
+              }
+            ],
+            "title": "Consolidate Page Views",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Consolidate Page Views",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 7
+        },
+        "id": 15,
+        "panels": [
+          {
+            "datasource": {
+              "type": "grafana-discourse-datasource",
+              "uid": "play-discourse"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 24,
+              "x": 0,
+              "y": 8
+            },
+            "id": 37,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "category": "All categories",
+                "datasource": {
+                  "type": "grafana-discourse-datasource",
+                  "uid": "play-discourse"
+                },
+                "getPaginated": false,
+                "period": "monthly",
+                "queryType": "report",
+                "refId": "A",
+                "reportName": "daily_engaged_users.json",
+                "searchArea": "topics_posts",
+                "searchAuthor": "",
+                "searchCategory": "",
+                "searchDate": "",
+                "searchPosted": "",
+                "searchQuery": "",
+                "searchSort": "latest",
+                "searchStatus": "",
+                "searchTag": "",
+                "tag": "",
+                "tagQuery": "",
+                "userQuery": "topPublicUsers"
+              }
+            ],
+            "title": "Daily Engaged Users",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Daily Engaged Users",
+        "type": "row"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 8
+        },
+        "id": 36,
+        "panels": [],
+        "title": "DAU / MAU",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "grafana-discourse-datasource",
+          "uid": "play-discourse"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 18,
+          "x": 0,
+          "y": 9
+        },
+        "id": 8,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "category": "All categories",
+            "datasource": {
+              "type": "grafana-discourse-datasource",
+              "uid": "play-discourse"
+            },
+            "getPaginated": false,
+            "period": "monthly",
+            "queryType": "report",
+            "refId": "A",
+            "reportName": "dau_by_mau.json",
+            "searchArea": "topics_posts",
+            "searchAuthor": "",
+            "searchCategory": "",
+            "searchDate": "",
+            "searchPosted": "",
+            "searchQuery": "",
+            "searchSort": "latest",
+            "searchStatus": "",
+            "searchTag": "",
+            "tag": "",
+            "tagQuery": "",
+            "userQuery": "topPublicUsers"
+          }
+        ],
+        "title": "DAU/MAU",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "grafana-discourse-datasource",
+          "uid": "play-discourse"
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 9
+        },
+        "id": 38,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "# DAU/MAU\n\nDAU/MAU\nNumber of members that logged in in the last day divided by number of members that logged in in the last month – returns a % which indicates community 'stickiness'. Aim for >20%.",
+          "mode": "markdown"
+        },
+        "pluginVersion": "10.0.2-cloud.1.94a6f396",
+        "targets": [
+          {
+            "category": "All categories",
+            "datasource": {
+              "type": "grafana-discourse-datasource",
+              "uid": "play-discourse"
+            },
+            "getPaginated": false,
+            "period": "monthly",
+            "queryType": "report",
+            "refId": "A",
+            "reportName": "daily_engaged_users.json",
+            "searchArea": "topics_posts",
+            "searchAuthor": "",
+            "searchCategory": "",
+            "searchDate": "",
+            "searchPosted": "",
+            "searchQuery": "",
+            "searchSort": "latest",
+            "searchStatus": "",
+            "searchTag": "",
+            "tag": "",
+            "tagQuery": "",
+            "userQuery": "topPublicUsers"
+          }
+        ],
+        "title": "DAU/MAU",
+        "type": "text"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 17
+        },
+        "id": 25,
+        "panels": [
+          {
+            "datasource": {
+              "type": "grafana-discourse-datasource",
+              "uid": "play-discourse"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 5
+            },
+            "id": 23,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "category": "All categories",
+                "datasource": {
+                  "type": "grafana-discourse-datasource",
+                  "uid": "play-discourse"
+                },
+                "getPaginated": false,
+                "period": "monthly",
+                "queryType": "report",
+                "refId": "A",
+                "reportName": "likes.json",
+                "searchArea": "topics_posts",
+                "searchAuthor": "",
+                "searchCategory": "",
+                "searchDate": "",
+                "searchPosted": "",
+                "searchQuery": "",
+                "searchSort": "latest",
+                "searchStatus": "",
+                "searchTag": "",
+                "tag": "",
+                "tagQuery": "",
+                "userQuery": "topPublicUsers"
+              }
+            ],
+            "title": "Likes",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Likes",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 18
+        },
+        "id": 27,
+        "panels": [
+          {
+            "datasource": {
+              "type": "grafana-discourse-datasource",
+              "uid": "play-discourse"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 6
+            },
+            "id": 22,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "category": "All categories",
+                "datasource": {
+                  "type": "grafana-discourse-datasource",
+                  "uid": "play-discourse"
+                },
+                "getPaginated": false,
+                "period": "monthly",
+                "queryType": "report",
+                "refId": "A",
+                "reportName": "new_contributors.json",
+                "searchArea": "topics_posts",
+                "searchAuthor": "",
+                "searchCategory": "",
+                "searchDate": "",
+                "searchPosted": "",
+                "searchQuery": "",
+                "searchSort": "latest",
+                "searchStatus": "",
+                "searchTag": "",
+                "tag": "",
+                "tagQuery": "",
+                "userQuery": "topPublicUsers"
+              }
+            ],
+            "title": "New Contributors",
+            "type": "timeseries"
+          }
+        ],
+        "title": "New Contributors",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 19
+        },
+        "id": 29,
+        "panels": [
+          {
+            "datasource": {
+              "type": "grafana-discourse-datasource",
+              "uid": "play-discourse"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 7
+            },
+            "id": 21,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "category": "All categories",
+                "datasource": {
+                  "type": "grafana-discourse-datasource",
+                  "uid": "play-discourse"
+                },
+                "getPaginated": false,
+                "period": "monthly",
+                "queryType": "report",
+                "refId": "A",
+                "reportName": "posts.json",
+                "searchArea": "topics_posts",
+                "searchAuthor": "",
+                "searchCategory": "",
+                "searchDate": "",
+                "searchPosted": "",
+                "searchQuery": "",
+                "searchSort": "latest",
+                "searchStatus": "",
+                "searchTag": "",
+                "tag": "",
+                "tagQuery": "",
+                "userQuery": "topPublicUsers"
+              }
+            ],
+            "title": "Posts",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Posts",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 20
+        },
+        "id": 31,
+        "panels": [
+          {
+            "datasource": {
+              "type": "grafana-discourse-datasource",
+              "uid": "play-discourse"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 8
+            },
+            "id": 20,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "category": "All categories",
+                "datasource": {
+                  "type": "grafana-discourse-datasource",
+                  "uid": "play-discourse"
+                },
+                "getPaginated": false,
+                "period": "monthly",
+                "queryType": "report",
+                "refId": "A",
+                "reportName": "signups.json",
+                "searchArea": "topics_posts",
+                "searchAuthor": "",
+                "searchCategory": "",
+                "searchDate": "",
+                "searchPosted": "",
+                "searchQuery": "",
+                "searchSort": "latest",
+                "searchStatus": "",
+                "searchTag": "",
+                "tag": "",
+                "tagQuery": "",
+                "userQuery": "topPublicUsers"
+              }
+            ],
+            "title": "Signups",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Signups",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 21
+        },
+        "id": 33,
+        "panels": [
+          {
+            "datasource": {
+              "type": "grafana-discourse-datasource",
+              "uid": "play-discourse"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 9
+            },
+            "id": 19,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "category": "All categories",
+                "datasource": {
+                  "type": "grafana-discourse-datasource",
+                  "uid": "play-discourse"
+                },
+                "getPaginated": false,
+                "period": "monthly",
+                "queryType": "report",
+                "refId": "A",
+                "reportName": "time_to_first_response.json",
+                "searchArea": "topics_posts",
+                "searchAuthor": "",
+                "searchCategory": "",
+                "searchDate": "",
+                "searchPosted": "",
+                "searchQuery": "",
+                "searchSort": "latest",
+                "searchStatus": "",
+                "searchTag": "",
+                "tag": "",
+                "tagQuery": "",
+                "userQuery": "topPublicUsers"
+              }
+            ],
+            "title": "Time to First Response",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Time to First Response",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 22
+        },
+        "id": 35,
+        "panels": [
+          {
+            "datasource": {
+              "type": "grafana-discourse-datasource",
+              "uid": "play-discourse"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 10
+            },
+            "id": 18,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "9.3.6",
+            "targets": [
+              {
+                "category": "All categories",
+                "datasource": {
+                  "type": "grafana-discourse-datasource",
+                  "uid": "play-discourse"
+                },
+                "getPaginated": false,
+                "period": "monthly",
+                "queryType": "report",
+                "refId": "A",
+                "reportName": "topics.json",
+                "searchArea": "topics_posts",
+                "searchAuthor": "",
+                "searchCategory": "",
+                "searchDate": "",
+                "searchPosted": "",
+                "searchQuery": "",
+                "searchSort": "latest",
+                "searchStatus": "",
+                "searchTag": "",
+                "tag": "",
+                "tagQuery": "",
+                "userQuery": "topPublicUsers"
+              },
+              {
+                "category": "All categories",
+                "datasource": {
+                  "type": "grafana-discourse-datasource",
+                  "uid": "play-discourse"
+                },
+                "getPaginated": false,
+                "hide": false,
+                "period": "monthly",
+                "queryType": "report",
+                "refId": "B",
+                "reportName": "topics_with_no_response.json",
+                "searchArea": "topics_posts",
+                "searchAuthor": "",
+                "searchCategory": "",
+                "searchDate": "",
+                "searchPosted": "",
+                "searchQuery": "",
+                "searchSort": "latest",
+                "searchStatus": "",
+                "searchTag": "",
+                "tag": "",
+                "tagQuery": "",
+                "userQuery": "topPublicUsers"
+              }
+            ],
+            "title": "Topics / Topics with No Response",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Topics / Topics With No Response",
+        "type": "row"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 38,
+    "style": "dark",
+    "tags": [
+      "community.grafana.com"
+    ],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6M",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Grafana Forum - Reports",
+    "uid": "K0d_FsAVz",
+    "version": 8,
+    "weekStart": ""
+  }

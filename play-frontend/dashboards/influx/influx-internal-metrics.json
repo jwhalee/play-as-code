@@ -1575,7 +1575,7 @@
     "timepicker": {},
     "timezone": "",
     "title": "Influx 2.2: Internal Metrics",
-    "uid": "influx-internal",
+    "uid": "play-influx-internal",
     "version": 17,
     "weekStart": ""
 }

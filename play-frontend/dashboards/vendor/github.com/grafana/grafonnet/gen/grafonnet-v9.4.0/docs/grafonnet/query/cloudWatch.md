@@ -1,4 +1,0 @@
-# cloudWatch
-
-grafonnet.query.cloudWatch
-

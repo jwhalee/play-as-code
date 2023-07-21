@@ -11,23 +11,9 @@ terraform {
   }
 }
 
-variable "grafana-token" {}
-variable "grafana-url" {}
-
 provider "grafana" {
   alias = "play"
 
   url   = "${var.grafana-url}"
   auth  = "${var.grafana-token}"
 }
-
-# # provision folder
-# resource "grafana_folder" "play-grafana" {
-#   provider = grafana.play
-#   uid   = "play-grafana"
-#   title = "play-grafana"
-# }
-
-# output "play_folder" {
-#   value = resource.grafana_folder.play-grafana
-# }

@@ -21,18 +21,17 @@
       }
     ]
   },
-  "description": "",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1501,
+  "id": 1556,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
-        "type": "mysql",
-        "uid": "bo2ZeUr7k"
+        "type": "graphite",
+        "uid": "play-graphite-wikimedia"
       },
       "fieldConfig": {
         "defaults": {
@@ -53,7 +52,7 @@
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "smooth",
+            "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -82,14 +81,13 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "currencyUSD"
+          }
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 16,
-        "w": 24,
+        "h": 9,
+        "w": 12,
         "x": 0,
         "y": 0
       },
@@ -106,62 +104,17 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "8.5.4",
       "targets": [
         {
           "datasource": {
-            "type": "mysql",
-            "uid": "bo2ZeUr7k"
+            "type": "graphite",
+            "uid": "play-graphite-wikimedia"
           },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "1h",
-                "NULL"
-              ],
-              "type": "time"
-            }
-          ],
-          "metricColumn": "none",
-          "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(payment_date,1h,NULL),\n  sum(amount) AS \"amount\"\nFROM payment\nWHERE\n  $__timeFilter(payment_date)\nGROUP BY 1\nORDER BY $__timeGroup(payment_date,1h,NULL)",
           "refId": "A",
-          "select": [
-            [
-              {
-                "params": [
-                  "amount"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "sum"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "amount"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "payment",
-          "timeColumn": "payment_date",
-          "timeColumnType": "datetime",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
+          "target": "MediaWiki.*.*"
         }
       ],
-      "title": "Total Sales Per Hour",
+      "title": "wikimedia.com metrics",
       "type": "timeseries"
     }
   ],
@@ -169,21 +122,23 @@
   "schemaVersion": 38,
   "style": "dark",
   "tags": [
-    "mysql",
+    "graphite",
     "community",
+    "real-time",
+    "public",
     "ds-example"
   ],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "2005-05-24T18:03:06.453Z",
-    "to": "2005-05-31T18:22:27.878Z"
+    "from": "now-6h",
+    "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "MySQL 8: Sakila Video Store Dummy Data",
-  "uid": "play-mysql-sakila",
-  "version": 5,
+  "title": "Graphite: wikimedia.com metrics",
+  "uid": "Ib-GkgRVk",
+  "version": 4,
   "weekStart": ""
 }

@@ -1,5 +1,6 @@
 {
    "description": "es ecommerce data",
+   "editable": true,
    "graphTooltip": 1,
    "panels": [
       {

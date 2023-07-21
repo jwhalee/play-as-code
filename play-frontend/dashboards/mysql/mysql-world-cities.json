@@ -31,7 +31,7 @@
       {
         "datasource": {
           "type": "mysql",
-          "uid": "play-mysql-world"
+          "uid": "QTzGEw97z"
         },
         "fieldConfig": {
           "defaults": {
@@ -85,7 +85,7 @@
           {
             "datasource": {
               "type": "mysql",
-              "uid": "play-mysql-world"
+              "uid": "QTzGEw97z"
             },
             "format": "table",
             "group": [],
@@ -131,7 +131,7 @@
     "timepicker": {},
     "timezone": "",
     "title": "MySQL 8: Cities of the World Sample Data Set",
-    "uid": "play-mysql-world",
+    "uid": "play-mysql-cities",
     "version": 5,
     "weekStart": ""
   }

@@ -749,8 +749,8 @@
     },
     "timepicker": {},
     "timezone": "",
-    "title": "Datasource tests - Elasticsearch migration Copy",
-    "uid": "e983fa47-f33c-4dd2-8eb7-3ee2dc9be430",
+    "title": "Elasticsearch: K8s Metrics",
+    "uid": "play-elastic-metrics",
     "version": 2,
     "weekStart": ""
   }

@@ -435,7 +435,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "Influx 2.2: Live NOAA Buoy Data",
-  "uid": "influx-noaa",
+  "uid": "play-influx-noaa",
   "version": 30,
   "weekStart": ""
 }

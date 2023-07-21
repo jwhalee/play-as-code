@@ -1,0 +1,139 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1959,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "graphite",
+          "uid": "000000001"
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 13,
+          "x": 0,
+          "y": 0
+        },
+        "id": 1,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "This panel demonstrates the way you can manipulate the labels/values variables coming from query. For example, First variable `$ {integrations}` returns values with prefix `integrations/` but in some other query, we wanted to remove that prefix. So this handy infinity query help to manipulate those values.\n\n## Integration Full Name\n\n${integrations}\n\n## Integration substring\n\n${substr_integrations}",
+          "mode": "markdown"
+        },
+        "pluginVersion": "10.0.3-cloud.2.14737d80",
+        "type": "text"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 38,
+    "style": "dark",
+    "tags": [
+      "infinity"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": false,
+            "text": "integrations/kubernetes/cadvisor",
+            "value": "integrations/kubernetes/cadvisor"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "grafanacloud-prom"
+          },
+          "definition": "label_values(job)",
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "integrations",
+          "options": [],
+          "query": {
+            "query": "label_values(job)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "/integrations.*/",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "grafana-mimir/cadvisor",
+            "value": "grafana-mimir/cadvisor"
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "U-QRJ7K4k"
+          },
+          "definition": "Infinity- (infinity) csv",
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "substr_integrations",
+          "options": [],
+          "query": {
+            "infinityQuery": {
+              "columns": [],
+              "data": "integrations\n$integrations",
+              "filters": [],
+              "format": "table",
+              "parser": "uql",
+              "refId": "variable",
+              "root_selector": "",
+              "source": "inline",
+              "type": "csv",
+              "uql": "parse-csv\n| project \"integration\"=substring(\"integrations\",13)",
+              "url": "https://github.com/yesoreyeram/grafana-infinity-datasource/blob/main/testdata/users.json",
+              "url_options": {
+                "data": "",
+                "method": "GET"
+              }
+            },
+            "query": "",
+            "queryType": "infinity"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Chained variable manipulation - Infinity",
+    "uid": "de9c9d9a-17f1-4287-9301-d38002be76bf",
+    "version": 7,
+    "weekStart": ""
+  }
