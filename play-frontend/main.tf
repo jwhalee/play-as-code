@@ -14,6 +14,6 @@ terraform {
 provider "grafana" {
   alias = "play"
 
-  url   = "${var.grafana-url}"
-  auth  = "${var.grafana-token}"
+  url  = var.grafana-url
+  auth = var.grafana-token
 }

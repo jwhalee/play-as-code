@@ -7,7 +7,7 @@
 # # provision datasource
 # resource "grafana_data_source" "play-ds-graphite-01" {
 #   provider = grafana.play
-  
+
 #   basic_auth_enabled  = false
 #   basic_auth_username = ""
 #   is_default          = true 
@@ -26,7 +26,7 @@
 # # provision datasource
 # resource "grafana_data_source" "play-ds-graphite-02" {
 #   provider = grafana.play
-  
+
 #   basic_auth_enabled  = false
 #   basic_auth_username = ""
 #   is_default          = false 

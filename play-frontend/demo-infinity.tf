@@ -15,23 +15,23 @@ resource "grafana_data_source" "play-ds-infinity" {
   url                 = ""
   uid                 = "U-QRJ7K4k"
   username            = ""
-  json_data_encoded   = jsonencode({
-    allowedHosts      = ["https://community.grafana.com"]
-    globalQueries     = []
-    httpHeaderName1   = "Api-Username" 
-    httpHeaderName2   = "Api-Key" 
+  json_data_encoded = jsonencode({
+    allowedHosts    = ["https://community.grafana.com"]
+    globalQueries   = []
+    httpHeaderName1 = "Api-Username"
+    httpHeaderName2 = "Api-Key"
   })
   secure_json_data_encoded = jsonencode({
-    httpHeaderValue1  = "${var.discourse-user}"
-    httpHeaderValue2  = "${var.discourse-key}"
+    httpHeaderValue1 = "${var.discourse-user}"
+    httpHeaderValue2 = "${var.discourse-key}"
   })
 }
 
 # provision folder
 resource "grafana_folder" "play-folder-infinity" {
   provider = grafana.play
-  uid   = "demo-infinity"
-  title = "Demo: Inifinity (JSON, CSV, and more)"
+  uid      = "demo-infinity"
+  title    = "Demo: Inifinity (JSON, CSV, and more)"
 }
 
 # # provision dashboard

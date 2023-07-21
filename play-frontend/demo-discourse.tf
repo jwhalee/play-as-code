@@ -16,13 +16,13 @@ resource "grafana_data_source" "play-ds-discourse" {
   url                 = "https://community.grafana.com"
   uid                 = "kKO9T574k"
   username            = ""
-  json_data_encoded   = jsonencode({
-    httpHeaderName1   = "Api-Username" 
-    httpHeaderName2   = "Api-Key" 
+  json_data_encoded = jsonencode({
+    httpHeaderName1 = "Api-Username"
+    httpHeaderName2 = "Api-Key"
   })
   secure_json_data_encoded = jsonencode({
-    httpHeaderValue1  = "${var.discourse-user}"
-    httpHeaderValue2  = "${var.discourse-key}"
+    httpHeaderValue1 = "${var.discourse-user}"
+    httpHeaderValue2 = "${var.discourse-key}"
   })
 }
 

@@ -7,11 +7,11 @@
 # provision datasource
 resource "grafana_data_source" "play-ds-bigquery-01" {
   provider = grafana.play
-  
+
   basic_auth_enabled  = false
   basic_auth_username = ""
   database_name       = ""
-  is_default          = false 
+  is_default          = false
   name                = "Google BigQuery"
   type                = "grafana-bigquery-datasource"
   url                 = ""
@@ -30,8 +30,8 @@ resource "grafana_data_source" "play-ds-bigquery-01" {
 # provision folder
 resource "grafana_folder" "play-folder-bigquery" {
   provider = grafana.play
-  uid   = "demo-bigquery"
-  title = "Demo: BigQuery"
+  uid      = "demo-bigquery"
+  title    = "Demo: BigQuery"
 }
 
 # provision dashboards
@@ -39,12 +39,12 @@ resource "grafana_dashboard" "play-dashboard-bigquery-01" {
   provider = grafana.play
 
   config_json = file("dashboards/google-bigquery/citibike-usage.json")
-  folder = grafana_folder.play-folder-bigquery.id
+  folder      = grafana_folder.play-folder-bigquery.id
 }
 
 resource "grafana_dashboard" "play-dashboard-bigquery-02" {
   provider = grafana.play
 
   config_json = file("dashboards/google-bigquery/global-life-expectancy.json")
-  folder = grafana_folder.play-folder-bigquery.id
+  folder      = grafana_folder.play-folder-bigquery.id
 }
