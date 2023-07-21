@@ -37,6 +37,20 @@ jobs:
         continue-on-error: true
         run: terraform plan -input=false -no-color
         working-directory: ./play-frontend
+        env:
+            GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+            TF_VAR_influx-password: ${{ secrets.INFLUX_PASSWORD }}
+            TF_VAR_influx-token: ${{ secrets.INFLUX_TOKEN }}
+            TF_VAR_influx-token-in-header: ${{ secrets.INFLUX_TOKEN_IN_HEADER }}
+            TF_VAR_elastic-password: ${{ secrets.ELASTIC_PASSWORD }}
+            TF_VAR_mysql-password: ${{ secrets.MYSQL_PASSWORD }}
+            TF_VAR_bigquery-key: ${{ secrets.BIGQUERY_KEY }}
+            TF_VAR_mongodb-key: ${{ secrets.MONGODB_KEY }}
+            TF_VAR_discourse-key: ${{ secrets.DISCOURSE_KEY }}
+            TF_VAR_discourse-user: ${{ secrets.DISCOURSE_USER }}
+            TF_VAR_grafana-url: ${{ secrets.GRAFANA_URL }}
+            TF_VAR_grafana-token: ${{ secrets.GRAFANA_TOKEN }}
+
 
       # Post the preview (terraform plan) from the previous step as a GitHub pull request comment
       - name: Post Plan to GitHub PR
@@ -58,5 +72,18 @@ jobs:
         id: apply
         continue-on-error: true
         working-directory: ./play-frontend
+        env:
+            GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+            TF_VAR_influx-password: ${{ secrets.INFLUX_PASSWORD }}
+            TF_VAR_influx-token: ${{ secrets.INFLUX_TOKEN }}
+            TF_VAR_influx-token-in-header: ${{ secrets.INFLUX_TOKEN_IN_HEADER }}
+            TF_VAR_elastic-password: ${{ secrets.ELASTIC_PASSWORD }}
+            TF_VAR_mysql-password: ${{ secrets.MYSQL_PASSWORD }}
+            TF_VAR_bigquery-key: ${{ secrets.BIGQUERY_KEY }}
+            TF_VAR_mongodb-key: ${{ secrets.MONGODB_KEY }}
+            TF_VAR_discourse-key: ${{ secrets.DISCOURSE_KEY }}
+            TF_VAR_discourse-user: ${{ secrets.DISCOURSE_USER }}
+            TF_VAR_grafana-url: ${{ secrets.GRAFANA_URL }}
+            TF_VAR_grafana-token: ${{ secrets.GRAFANA_TOKEN }}
         run: |
           terraform apply -auto-approve
