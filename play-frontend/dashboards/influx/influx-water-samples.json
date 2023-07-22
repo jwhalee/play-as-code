@@ -171,6 +171,6 @@
     "timezone": "",
     "title": "Influx 2.2: NOAA Water Samples, 30 days at 2 Sites (Historical)",
     "uid": "play-influx-water",
-    "version": 11,
+    "version": 12,
     "weekStart": ""
   }
