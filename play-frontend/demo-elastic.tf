@@ -127,7 +127,6 @@ resource "grafana_folder" "play-folder-elastic" {
   title    = "Demo: Elasticsearch"
 }
 
-
 # provision dashbaords
 resource "grafana_dashboard" "elastic" {
   provider = grafana.play
