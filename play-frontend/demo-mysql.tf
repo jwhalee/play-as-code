@@ -45,26 +45,11 @@ resource "grafana_folder" "play-folder-mysql" {
   title    = "Demo: MySQL 8"
 }
 
-# provision dashboard
-resource "grafana_dashboard" "play-dashboard-mysql-01" {
+# provision dashbaords
+resource "grafana_dashboard" "mysql" {
   provider = grafana.play
 
-  config_json = file("dashboards/mysql/mysql-sakila.json")
+  for_each    = fileset("${path.module}/dashboards/mysql", "*.json")
+  config_json = file("${path.module}/dashboards/mysql/${each.key}")
   folder      = grafana_folder.play-folder-mysql.id
 }
-
-# provision dashboard
-resource "grafana_dashboard" "play-dashboard-mysql-02" {
-  provider = grafana.play
-
-  config_json = file("dashboards/mysql/mysql-world-cities.json")
-  folder      = grafana_folder.play-folder-mysql.id
-}
-
-# output "play_dashboard_mysql_02" {
-#   value = resource.grafana_dashboard.play-dashboard-mysql-02
-# }
-
-# output "play_dashboard_mysql_01" {
-#   value = resource.grafana_dashboard.play-dashboard-mysql-01
-# }

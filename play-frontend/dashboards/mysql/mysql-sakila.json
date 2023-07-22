@@ -184,6 +184,6 @@
   "timezone": "",
   "title": "MySQL 8: Sakila Video Store Dummy Data",
   "uid": "play-mysql-sakila",
-  "version": 5,
+  "version": 6,
   "weekStart": ""
 }
