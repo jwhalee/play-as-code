@@ -127,47 +127,12 @@ resource "grafana_folder" "play-folder-elastic" {
   title    = "Demo: Elasticsearch"
 }
 
-# provision dashboard
-resource "grafana_dashboard" "play-dashboard-elastic-01" {
+
+# provision dashbaords
+resource "grafana_dashboard" "elastic" {
   provider = grafana.play
 
-  config_json = file("dashboards/elastic/ecommerce.json")
+  for_each    = fileset("${path.module}/dashboards/elastic", "*.json")
+  config_json = file("${path.module}/dashboards/elastic/${each.key}")
   folder      = grafana_folder.play-folder-elastic.id
 }
-
-# provision dashboard
-resource "grafana_dashboard" "play-dashboard-elastic-02" {
-  provider = grafana.play
-
-  config_json = file("dashboards/elastic/flights.json")
-  folder      = grafana_folder.play-folder-elastic.id
-}
-
-# provision dashboard
-resource "grafana_dashboard" "play-dashboard-elastic-03" {
-  provider = grafana.play
-
-  config_json = file("dashboards/elastic/logs.json")
-  folder      = grafana_folder.play-folder-elastic.id
-}
-
-# provision dashboard
-resource "grafana_dashboard" "play-dashboard-elastic-04" {
-  provider = grafana.play
-
-  config_json = file("dashboards/elastic/histogram.json")
-  folder      = grafana_folder.play-folder-elastic.id
-}
-
-# outputs
-# output "play_dashboard_elastic_03" {
-#   value = resource.grafana_dashboard.play-dashboard-elastic-03
-# }
-
-# output "play_dashboard_elastic_01" {
-#   value = resource.grafana_dashboard.play-dashboard-elastic-01
-# }
-
-# output "play_dashboard_elastic_02" {
-#   value = resource.grafana_dashboard.play-dashboard-elastic-02
-# }
