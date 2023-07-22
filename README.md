@@ -1,5 +1,7 @@
 # play-as-code
 
+the official repository for managing our public sandbox and learning environment: https://play.grafana.org
+
 this repo contains everything you need to:
 
 1) manage the isolated cluster that runs Grafana Play's special community databases.
