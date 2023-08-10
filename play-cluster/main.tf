@@ -100,30 +100,30 @@ resource "google_compute_address" "play_clickhouse_ip" {
   region = "us-central1"
 }
 
-resource "google_compute_address" "play_influx_ip" {
-  name   = "play-influx-ip"
-  region = "us-central1"
-}
+# resource "google_compute_address" "play_influx_ip" {
+#   name   = "play-influx-ip"
+#   region = "us-central1"
+# }
 
-resource "google_compute_address" "play_opentsdb_ip" {
-  name   = "play-opentsdb-ip"
-  region = "us-central1"
-}
+# resource "google_compute_address" "play_opentsdb_ip" {
+#   name   = "play-opentsdb-ip"
+#   region = "us-central1"
+# }
 
 resource "google_compute_address" "play_dev_ip" {
   name   = "play-dev-ip"
   region = "us-central1"
 }
 
-resource "google_compute_address" "play_elastic_ip" {
-  name   = "play-elastic-ip"
-  region = "us-central1"
-}
+# resource "google_compute_address" "play_elastic_ip" {
+#   name   = "play-elastic-ip"
+#   region = "us-central1"
+# }
 
-resource "google_compute_address" "play_kibana_ip" {
-  name   = "play-kibana-ip"
-  region = "us-central1"
-}
+# resource "google_compute_address" "play_kibana_ip" {
+#   name   = "play-kibana-ip"
+#   region = "us-central1"
+# }
 
 resource "kubernetes_persistent_volume_claim" "persistentvolumeclaim_elasticsearch_data" {
   metadata {
@@ -176,7 +176,7 @@ resource "kubernetes_persistent_volume_claim" "persistentvolumeclaim_influx_data
     access_modes = ["ReadWriteOnce"]
     resources {
       requests = {
-        storage = "5Gi"
+        storage = "50Gi"
       }
     }
     storage_class_name = "standard"
