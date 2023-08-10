@@ -1,4 +1,4 @@
-name: Terraform the Frontend
+name: Terraform the Backend
 
 on:
   push:
@@ -50,6 +50,18 @@ jobs:
             TF_VAR_discourse-user: ${{ secrets.DISCOURSE_USER }}
             TF_VAR_grafana-url: ${{ secrets.GRAFANA_URL }}
             TF_VAR_grafana-token: ${{ secrets.GRAFANA_TOKEN }}
+            TF_VAR_namespace: "matt-sandbox"
+            TF_VAR_namespace-prod: "play-backends"
+            TF_VAR_cluster_ip: "34.133.99.59"
+            TF_VAR_elastic_domain_name: "https://elastic.grafana.fun"
+            TF_VAR_clickhouse_version: "latest"
+            TF_VAR_elastic_version: "8.7.1"
+            TF_VAR_grafana_version: "latest"
+            TF_VAR_influxdb_version: "latest"
+            TF_VAR_mysql_version: "8.0.32"
+            TF_VAR_postgres_version: "latest"
+            TF_VAR_redis_version: "latest"
+
 
 
       # Post the preview (terraform plan) from the previous step as a GitHub pull request comment
@@ -85,5 +97,16 @@ jobs:
             TF_VAR_discourse-user: ${{ secrets.DISCOURSE_USER }}
             TF_VAR_grafana-url: ${{ secrets.GRAFANA_URL }}
             TF_VAR_grafana-token: ${{ secrets.GRAFANA_TOKEN }}
+            TF_VAR_namespace: "matt-sandbox"
+            TF_VAR_namespace-prod: "play-backends"
+            TF_VAR_cluster_ip: "34.133.99.59"
+            TF_VAR_elastic_domain_name: "https://elastic.grafana.fun"
+            TF_VAR_clickhouse_version: "latest"
+            TF_VAR_elastic_version: "8.7.1"
+            TF_VAR_grafana_version: "latest"
+            TF_VAR_influxdb_version: "latest"
+            TF_VAR_mysql_version: "8.0.32"
+            TF_VAR_postgres_version: "latest"
+            TF_VAR_redis_version: "latest"
         run: |
           terraform apply -auto-approve
