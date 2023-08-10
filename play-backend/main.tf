@@ -16,8 +16,8 @@ terraform {
 
 # Retrieve GKE cluster information
 provider "google" {
-  project    = "raintank-dev"
-  region     = "us-central1"
+  project = "raintank-dev"
+  region  = "us-central1"
 }
 
 # Configure kubernetes provider with Oauth2 access token.
@@ -54,24 +54,24 @@ module "elasticstack" {
 
 module "influxdb" {
   source           = "./influxdb"
-  namespace-prod = var.namespace-prod
+  namespace-prod   = var.namespace-prod
   play_influx_ip   = var.play_influx_ip
   influxdb_version = var.influxdb_version
 }
 
 module "mysql" {
-  source             = "./mysql"
-  cluster_ip         = var.cluster_ip
+  source     = "./mysql"
+  cluster_ip = var.cluster_ip
   # namespace     = var.namespace
-  namespace-prod     = var.namespace-prod
-  mysql_version      = var.mysql_version
+  namespace-prod = var.namespace-prod
+  mysql_version  = var.mysql_version
 }
 
 module "redis" {
-  source        = "./redis"
-  cluster_ip    = var.cluster_ip
-  namespace-prod     = var.namespace-prod
-  redis_version = var.redis_version
+  source         = "./redis"
+  cluster_ip     = var.cluster_ip
+  namespace-prod = var.namespace-prod
+  redis_version  = var.redis_version
 }
 
 module "clickhouse" {
@@ -83,25 +83,25 @@ module "clickhouse" {
 }
 
 module "opentsdb" {
-  source    = "./opentsdb"
+  source = "./opentsdb"
   # namespace = var.namespace
   namespace-prod = var.namespace-prod
   ip             = var.play_opentsdb_ip
 }
 
 module "postgres" {
-  source = "./postgres"
-  cluster_ip = var.cluster_ip
-  namespace-prod = var.namespace-prod
+  source           = "./postgres"
+  cluster_ip       = var.cluster_ip
+  namespace-prod   = var.namespace-prod
   postgres_version = var.postgres_version
 }
 
 module "httpbin" {
-  source = "./k6-bin"
+  source         = "./k6-bin"
   namespace-prod = var.namespace-prod
 }
 
 module "k6-test" {
-  source = "./k6-test"
+  source         = "./k6-test"
   namespace-prod = var.namespace-prod
 }

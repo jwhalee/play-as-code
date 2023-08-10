@@ -1,12 +1,12 @@
 resource "kubernetes_manifest" "deployment_grafana" {
   manifest = {
     "apiVersion" = "apps/v1"
-    "kind" = "Deployment"
+    "kind"       = "Deployment"
     "metadata" = {
       "labels" = {
         "io.kompose.service" = "grafana"
       }
-      "name" = "grafana"
+      "name"      = "grafana"
       "namespace" = "matt-sandbox"
     }
     "spec" = {
@@ -30,7 +30,7 @@ resource "kubernetes_manifest" "deployment_grafana" {
           "containers" = [
             {
               "image" = "grafana/grafana:${var.grafana_version}"
-              "name" = "grafana"
+              "name"  = "grafana"
               "ports" = [
                 {
                   "containerPort" = 3000
@@ -83,17 +83,17 @@ resource "kubernetes_manifest" "deployment_grafana" {
 resource "kubernetes_service" "service_grafana" {
   metadata {
     labels = {
-        "io.kompose.service" = "grafana"
-      }
-    name = "grafana"
+      "io.kompose.service" = "grafana"
+    }
+    name      = "grafana"
     namespace = var.namespace
   }
   spec {
     selector = {
-        "io.kompose.service" = "grafana"
-      }
+      "io.kompose.service" = "grafana"
+    }
     port {
-      name = "3000"
+      name        = "3000"
       port        = 80
       target_port = 3000
     }

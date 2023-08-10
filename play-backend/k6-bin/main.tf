@@ -1,6 +1,6 @@
 resource "kubernetes_deployment" "deployment_httpbin" {
   metadata {
-    name = "httpbin"
+    name      = "httpbin"
     namespace = var.namespace-prod
     labels = {
       app = "httpbin"
@@ -8,8 +8,8 @@ resource "kubernetes_deployment" "deployment_httpbin" {
   }
   spec {
     strategy {
-        type = "Recreate"
-      }
+      type = "Recreate"
+    }
 
     replicas = 4
 
@@ -27,19 +27,19 @@ resource "kubernetes_deployment" "deployment_httpbin" {
       }
       spec {
         service_account_name = "test-k6-io"
-        
+
         image_pull_secrets {
           name = "dockerhub"
         }
         container {
-          image = "grafana/k6-httpbin:v0.7.3"
-          name = "httpbin"
+          image             = "grafana/k6-httpbin:v0.7.3"
+          name              = "httpbin"
           image_pull_policy = "IfNotPresent"
           security_context {
-            run_as_non_root = true
-            run_as_user = 1000
+            run_as_non_root            = true
+            run_as_user                = 1000
             allow_privilege_escalation = false
-            read_only_root_filesystem = false
+            read_only_root_filesystem  = false
             capabilities {
               drop = [
                 "NET_RAW"
@@ -48,28 +48,28 @@ resource "kubernetes_deployment" "deployment_httpbin" {
           }
           resources {
             limits = {
-              cpu = "70m"
+              cpu    = "70m"
               memory = "96Mi"
             }
             requests = {
-              cpu = "50m"
+              cpu    = "50m"
               memory = "64Mi"
             }
           }
 
           port {
-            name = "http"
+            name           = "http"
             container_port = 8080
-            protocol = "TCP"
-            }
-          
+            protocol       = "TCP"
+          }
+
           liveness_probe {
             http_get {
               path = "/"
               port = 8080
             }
-            period_seconds = 10
-            timeout_seconds = 5
+            period_seconds    = 10
+            timeout_seconds   = 5
             success_threshold = 1
             failure_threshold = 6
           }
@@ -80,10 +80,10 @@ resource "kubernetes_deployment" "deployment_httpbin" {
               port = 8080
             }
             initial_delay_seconds = 5
-            period_seconds = 5
-            timeout_seconds = 3
-            success_threshold = 1
-            failure_threshold = 3
+            period_seconds        = 5
+            timeout_seconds       = 3
+            success_threshold     = 1
+            failure_threshold     = 3
           }
         }
         restart_policy = "Always"
@@ -95,15 +95,15 @@ resource "kubernetes_deployment" "deployment_httpbin" {
 resource "kubernetes_service" "service_httpbin" {
   metadata {
     labels = {
-        app = "httpbin"
-      }
-    name = "httpbin"
+      app = "httpbin"
+    }
+    name      = "httpbin"
     namespace = var.namespace-prod
   }
   spec {
     selector = {
-        app = "httpbin"
-      }
+      app = "httpbin"
+    }
     port {
       port        = 8080
       target_port = 8080
@@ -113,7 +113,7 @@ resource "kubernetes_service" "service_httpbin" {
 
 resource "kubernetes_ingress_v1" "ingress_httpbin" {
   metadata {
-    name = "httpbin"
+    name      = "httpbin"
     namespace = var.namespace-prod
   }
   spec {
@@ -123,7 +123,7 @@ resource "kubernetes_ingress_v1" "ingress_httpbin" {
       http {
         path {
           path_type = "Prefix"
-          path = "/"
+          path      = "/"
           backend {
             service {
               name = "httpbin"
@@ -132,7 +132,7 @@ resource "kubernetes_ingress_v1" "ingress_httpbin" {
               }
             }
           }
-        }   
+        }
       }
     }
   }

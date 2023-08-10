@@ -1,6 +1,6 @@
 resource "kubernetes_config_map_v1" "mysql-configmap" {
   metadata {
-    name = "mysql-setup"
+    name      = "mysql-setup"
     namespace = var.namespace-prod
     labels = {
       "io.kompose.service" = "mysql"
@@ -14,12 +14,12 @@ resource "kubernetes_config_map_v1" "mysql-configmap" {
 
 resource "kubernetes_deployment" "deployment_mysql" {
   metadata {
-      labels = {
-        "io.kompose.service" = "mysql"
-      }
-      name = "mysql"
-      namespace = var.namespace-prod
+    labels = {
+      "io.kompose.service" = "mysql"
     }
+    name      = "mysql"
+    namespace = var.namespace-prod
+  }
   spec {
     replicas = 1
     strategy {}
@@ -43,35 +43,35 @@ resource "kubernetes_deployment" "deployment_mysql" {
             "--innodb_monitor_enable=all",
           ]
           env {
-              name = "MYSQL_DATABASE"
-              value = "grafana"
+            name  = "MYSQL_DATABASE"
+            value = "grafana"
           }
           env {
-              name = "MYSQL_PASSWORD"
-              value = "89024jhk7D3809423hjhj"
-            }
+            name  = "MYSQL_PASSWORD"
+            value = "89024jhk7D3809423hjhj"
+          }
           env {
-              name = "MYSQL_ROOT_PASSWORD"
-              value = "89024jhk7D3809423hjhj"
-            }
+            name  = "MYSQL_ROOT_PASSWORD"
+            value = "89024jhk7D3809423hjhj"
+          }
           env {
-              name = "MYSQL_USER"
-              value = "grafana"
-            }
+            name  = "MYSQL_USER"
+            value = "grafana"
+          }
           image = "mysql:8.0.32"
-          name = "mysql"
+          name  = "mysql"
           port {
             container_port = 3306
-            }
+          }
           resources {}
           volume_mount {
-              mount_path = "/var/lib/mysql"
-              name = "mysql-data"
+            mount_path = "/var/lib/mysql"
+            name       = "mysql-data"
           }
           volume_mount {
             mount_path = "/setup.sh"
-            name = "mysql-setup"
-            sub_path = "setup.sh"
+            name       = "mysql-setup"
+            sub_path   = "setup.sh"
           }
         }
         restart_policy = "Always"
@@ -95,15 +95,15 @@ resource "kubernetes_deployment" "deployment_mysql" {
 resource "kubernetes_service" "service_mysql" {
   metadata {
     labels = {
-        "io.kompose.service" = "mysql"
-      }
-    name = "mysql"
+      "io.kompose.service" = "mysql"
+    }
+    name      = "mysql"
     namespace = var.namespace-prod
   }
   spec {
     selector = {
-        "io.kompose.service" = "mysql"
-      }
+      "io.kompose.service" = "mysql"
+    }
     port {
       name        = "3306"
       port        = 3306

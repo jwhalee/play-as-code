@@ -1,6 +1,6 @@
 resource "kubernetes_deployment" "deployment_clickhouse" {
   metadata {
-    name = "clickhouse"
+    name      = "clickhouse"
     namespace = var.namespace-prod
     labels = {
       "io.kompose.service" = "clickhouse"
@@ -8,8 +8,8 @@ resource "kubernetes_deployment" "deployment_clickhouse" {
   }
   spec {
     strategy {
-        type = "Recreate"
-      }
+      type = "Recreate"
+    }
 
     replicas = 1
 
@@ -28,12 +28,12 @@ resource "kubernetes_deployment" "deployment_clickhouse" {
       spec {
         container {
           image = "clickhouse/clickhouse-server:${var.clickhouse_version}"
-          name = "clickhouse"
+          name  = "clickhouse"
           port {
             container_port = 8123
-            }
+          }
           resources {}
-         
+
         }
         restart_policy = "Always"
       }
@@ -44,15 +44,15 @@ resource "kubernetes_deployment" "deployment_clickhouse" {
 resource "kubernetes_service" "service_clickhouse" {
   metadata {
     labels = {
-        "io.kompose.service" = "clickhouse"
-      }
-    name = "clickhouse"
+      "io.kompose.service" = "clickhouse"
+    }
+    name      = "clickhouse"
     namespace = var.namespace-prod
   }
   spec {
     selector = {
-        "io.kompose.service" = "clickhouse"
-      }
+      "io.kompose.service" = "clickhouse"
+    }
     port {
       port        = 8123
       target_port = 8123
@@ -63,7 +63,7 @@ resource "kubernetes_service" "service_clickhouse" {
 
 resource "kubernetes_ingress_v1" "ingress_clickhouse" {
   metadata {
-    name = "clickhouse"
+    name      = "clickhouse"
     namespace = var.namespace-prod
   }
   spec {
@@ -73,7 +73,7 @@ resource "kubernetes_ingress_v1" "ingress_clickhouse" {
       http {
         path {
           path_type = "Prefix"
-          path = "/"
+          path      = "/"
           backend {
             service {
               name = "clickhouse"
@@ -82,7 +82,7 @@ resource "kubernetes_ingress_v1" "ingress_clickhouse" {
               }
             }
           }
-        }   
+        }
       }
     }
   }

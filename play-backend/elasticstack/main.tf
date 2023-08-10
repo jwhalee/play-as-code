@@ -1,6 +1,6 @@
 resource "kubernetes_deployment" "deployment_elasticsearch" {
   metadata {
-    name = "elasticsearch"
+    name      = "elasticsearch"
     namespace = var.namespace-prod
     labels = {
       "io.kompose.service" = "elasticsearch"
@@ -61,35 +61,35 @@ resource "kubernetes_deployment" "deployment_elasticsearch" {
         }
 
         container {
-          env { 
-              name = "discovery.type"
-              value = "single-node"
-            }
           env {
-              name = "xpack.license.self_generated.type"
-              value = "basic"
-            }
+            name  = "discovery.type"
+            value = "single-node"
+          }
           env {
-              name = "ELASTIC_PASSWORD"
-              value = "grafana"
-            }
+            name  = "xpack.license.self_generated.type"
+            value = "basic"
+          }
           env {
-              name = "KIBANA_PASSWORD"
-              value = "grafana"
-            }
+            name  = "ELASTIC_PASSWORD"
+            value = "grafana"
+          }
           env {
-              name = "xpack.security.enabled"
-              value = "true"
-            }
+            name  = "KIBANA_PASSWORD"
+            value = "grafana"
+          }
           env {
-            name = "ES_JAVA_OPTS"
+            name  = "xpack.security.enabled"
+            value = "true"
+          }
+          env {
+            name  = "ES_JAVA_OPTS"
             value = "-Xms4g -Xmx4g"
           }
           image = "elasticsearch:${var.elastic_version}"
-          name = "elasticsearch"
+          name  = "elasticsearch"
           port {
             container_port = 8086
-            }
+          }
           resources {}
           # volume_mount {
           #   mount_path = "/usr/share/elasticsearch/data"
@@ -111,17 +111,17 @@ resource "kubernetes_deployment" "deployment_elasticsearch" {
 resource "kubernetes_service" "service_elasticsearch" {
   metadata {
     labels = {
-        "io.kompose.service" = "elasticsearch"
-      }
-    name = "elasticsearch"
+      "io.kompose.service" = "elasticsearch"
+    }
+    name      = "elasticsearch"
     namespace = var.namespace-prod
   }
   spec {
     selector = {
-        "io.kompose.service" = "elasticsearch"
-      }
+      "io.kompose.service" = "elasticsearch"
+    }
     port {
-      name = "9200"
+      name        = "9200"
       port        = 9200
       target_port = 9200
     }
@@ -130,7 +130,7 @@ resource "kubernetes_service" "service_elasticsearch" {
 
 resource "kubernetes_ingress_v1" "ingress_elastic" {
   metadata {
-    name = "elastic"
+    name      = "elastic"
     namespace = var.namespace-prod
   }
   spec {
@@ -140,7 +140,7 @@ resource "kubernetes_ingress_v1" "ingress_elastic" {
       http {
         path {
           path_type = "Prefix"
-          path = "/"
+          path      = "/"
           backend {
             service {
               name = "elasticsearch"
@@ -149,7 +149,7 @@ resource "kubernetes_ingress_v1" "ingress_elastic" {
               }
             }
           }
-        }   
+        }
       }
     }
   }
@@ -157,7 +157,7 @@ resource "kubernetes_ingress_v1" "ingress_elastic" {
 
 resource "kubernetes_ingress_v1" "ingress_kibana" {
   metadata {
-    name = "kibana"
+    name      = "kibana"
     namespace = var.namespace-prod
   }
   spec {
@@ -167,7 +167,7 @@ resource "kubernetes_ingress_v1" "ingress_kibana" {
       http {
         path {
           path_type = "Prefix"
-          path = "/"
+          path      = "/"
           backend {
             service {
               name = "kibana"
@@ -176,7 +176,7 @@ resource "kubernetes_ingress_v1" "ingress_kibana" {
               }
             }
           }
-        }   
+        }
       }
     }
   }
@@ -184,7 +184,7 @@ resource "kubernetes_ingress_v1" "ingress_kibana" {
 
 resource "kubernetes_config_map_v1" "kibana-configmap" {
   metadata {
-    name = "kibana-configmap"
+    name      = "kibana-configmap"
     namespace = var.namespace-prod
   }
 
@@ -196,12 +196,12 @@ resource "kubernetes_config_map_v1" "kibana-configmap" {
 resource "kubernetes_manifest" "deployment_kibana" {
   manifest = {
     "apiVersion" = "apps/v1"
-    "kind" = "Deployment"
+    "kind"       = "Deployment"
     "metadata" = {
       "labels" = {
         "io.kompose.service" = "kibana"
       }
-      "name" = "kibana"
+      "name"      = "kibana"
       "namespace" = var.namespace-prod
     }
     "spec" = {
@@ -222,7 +222,7 @@ resource "kubernetes_manifest" "deployment_kibana" {
           "containers" = [
             {
               "image" = "docker.elastic.co/kibana/kibana:8.7.1"
-              "name" = "kibana"
+              "name"  = "kibana"
               "ports" = [
                 {
                   "containerPort" = 5601
@@ -232,7 +232,7 @@ resource "kubernetes_manifest" "deployment_kibana" {
               "volumeMounts" = [
                 {
                   "mountPath" = "/usr/share/kibana/config/"
-                  "name" = "kibana-config"
+                  "name"      = "kibana-config"
                 },
               ]
             },
@@ -256,17 +256,17 @@ resource "kubernetes_manifest" "deployment_kibana" {
 resource "kubernetes_service" "service_kibana" {
   metadata {
     labels = {
-        "io.kompose.service" = "kibana"
-      }
-    name = "kibana"
+      "io.kompose.service" = "kibana"
+    }
+    name      = "kibana"
     namespace = var.namespace-prod
   }
   spec {
     selector = {
-        "io.kompose.service" = "kibana"
-      }
+      "io.kompose.service" = "kibana"
+    }
     port {
-      name = "5601"
+      name        = "5601"
       port        = 5601
       target_port = 5601
     }

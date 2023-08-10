@@ -1,15 +1,15 @@
 resource "kubernetes_service" "service_redis" {
   metadata {
     labels = {
-        "io.kompose.service" = "redis"
-      }
-    name = "redis"
+      "io.kompose.service" = "redis"
+    }
+    name      = "redis"
     namespace = var.namespace-prod
   }
   spec {
     selector = {
-        "io.kompose.service" = "redis"
-      }
+      "io.kompose.service" = "redis"
+    }
     port {
       name        = "6379"
       port        = 6379

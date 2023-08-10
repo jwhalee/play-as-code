@@ -1,6 +1,6 @@
 resource "kubernetes_deployment" "deployment_redis" {
   metadata {
-    name = "redis"
+    name      = "redis"
     namespace = var.namespace-prod
     labels = {
       "io.kompose.service" = "redis"
@@ -8,8 +8,8 @@ resource "kubernetes_deployment" "deployment_redis" {
   }
   spec {
     strategy {
-        type = "Recreate"
-      }
+      type = "Recreate"
+    }
 
     replicas = 1
 
@@ -28,10 +28,10 @@ resource "kubernetes_deployment" "deployment_redis" {
       spec {
         container {
           image = "redis:${var.redis_version}"
-          name = "redis"
+          name  = "redis"
           port {
             container_port = 6379
-            }
+          }
           resources {}
         }
         restart_policy = "Always"

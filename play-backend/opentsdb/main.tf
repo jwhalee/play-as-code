@@ -1,6 +1,6 @@
 resource "kubernetes_deployment" "deployment_opentsdb" {
   metadata {
-    name = "opentsdb"
+    name      = "opentsdb"
     namespace = var.namespace-prod
     labels = {
       "io.kompose.service" = "opentsdb"
@@ -8,8 +8,8 @@ resource "kubernetes_deployment" "deployment_opentsdb" {
   }
   spec {
     strategy {
-        type = "Recreate"
-      }
+      type = "Recreate"
+    }
 
     replicas = 2
 
@@ -28,11 +28,11 @@ resource "kubernetes_deployment" "deployment_opentsdb" {
       spec {
         container {
           image = "petergrace/opentsdb-docker:latest"
-          name = "opentsdb"
+          name  = "opentsdb"
           port {
             container_port = 4242
-            }
-          resources {}        
+          }
+          resources {}
         }
         restart_policy = "Always"
       }
@@ -43,15 +43,15 @@ resource "kubernetes_deployment" "deployment_opentsdb" {
 resource "kubernetes_service" "service_opentsdb" {
   metadata {
     labels = {
-        "io.kompose.service" = "opentsdb"
-      }
-    name = "opentsdb"
+      "io.kompose.service" = "opentsdb"
+    }
+    name      = "opentsdb"
     namespace = var.namespace-prod
   }
   spec {
     selector = {
-        "io.kompose.service" = "opentsdb"
-      }
+      "io.kompose.service" = "opentsdb"
+    }
     port {
       port        = 4242
       target_port = 4242
@@ -62,7 +62,7 @@ resource "kubernetes_service" "service_opentsdb" {
 
 resource "kubernetes_ingress_v1" "ingress_opentsdb" {
   metadata {
-    name = "opentsdb"
+    name      = "opentsdb"
     namespace = var.namespace-prod
   }
   spec {
@@ -72,7 +72,7 @@ resource "kubernetes_ingress_v1" "ingress_opentsdb" {
       http {
         path {
           path_type = "Prefix"
-          path = "/"
+          path      = "/"
           backend {
             service {
               name = "opentsdb"
@@ -81,7 +81,7 @@ resource "kubernetes_ingress_v1" "ingress_opentsdb" {
               }
             }
           }
-        }   
+        }
       }
     }
   }

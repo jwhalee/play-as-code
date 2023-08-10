@@ -1,6 +1,6 @@
 resource "kubernetes_deployment" "deployment_postgresdb" {
   metadata {
-    name = "postgresdb"
+    name      = "postgresdb"
     namespace = var.namespace-prod
     labels = {
       app = "postgresdb"
@@ -8,8 +8,8 @@ resource "kubernetes_deployment" "deployment_postgresdb" {
   }
   spec {
     strategy {
-        type = "Recreate"
-      }
+      type = "Recreate"
+    }
 
     replicas = 2
 
@@ -28,10 +28,10 @@ resource "kubernetes_deployment" "deployment_postgresdb" {
       spec {
         container {
           image = "aa8y/postgres-dataset:latest"
-          name = "postgresql"
+          name  = "postgresql"
           port {
             container_port = 5432
-            }
+          }
           resources {}
           # env_from {
           #   config_map_ref {
@@ -77,15 +77,15 @@ resource "kubernetes_deployment" "deployment_postgresdb" {
 resource "kubernetes_service" "service_postgresdb" {
   metadata {
     labels = {
-        app = "postgresdb"
-      }
-    name = "postgresdb"
+      app = "postgresdb"
+    }
+    name      = "postgresdb"
     namespace = var.namespace-prod
   }
   spec {
     selector = {
-        app = "postgresdb"
-      }
+      app = "postgresdb"
+    }
     port {
       name        = "5432"
       port        = 5432
