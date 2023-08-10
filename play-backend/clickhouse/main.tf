@@ -11,7 +11,7 @@ resource "kubernetes_deployment" "deployment_clickhouse" {
       type = "Recreate"
     }
 
-    replicas = 2
+    replicas = 3
 
     selector {
       match_labels = {
