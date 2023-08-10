@@ -5,3 +5,5 @@ we used helm and bound the load balancer to a static IP like this:
 that static IP, `nginx` was also manually created:
 run:
 `gcloud compute addresses describe nginx --region us-central1`
+
+foo
