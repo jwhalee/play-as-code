@@ -57,8 +57,8 @@ module "influxdb" {
 }
 
 module "mysql" {
-  source     = "./mysql"
-  cluster_ip = var.cluster_ip
+  source         = "./mysql"
+  cluster_ip     = var.cluster_ip
   namespace-prod = var.namespace-prod
   mysql_version  = var.mysql_version
 }
@@ -77,7 +77,7 @@ module "clickhouse" {
 }
 
 module "opentsdb" {
-  source = "./opentsdb"
+  source         = "./opentsdb"
   namespace-prod = var.namespace-prod
 }
 
