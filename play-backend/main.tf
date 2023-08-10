@@ -39,8 +39,6 @@ provider "kubernetes" {
 module "elasticstack" {
   source                   = "./elasticstack"
   namespace-prod           = var.namespace-prod
-  play_elastic_ip          = var.play_elastic_ip
-  play_kibana_ip           = var.play_kibana_ip
   play_elastic_domain_name = var.play_elastic_domain_name
   elastic_version          = var.elastic_version
 }
@@ -55,14 +53,12 @@ module "elasticstack" {
 module "influxdb" {
   source           = "./influxdb"
   namespace-prod   = var.namespace-prod
-  play_influx_ip   = var.play_influx_ip
   influxdb_version = var.influxdb_version
 }
 
 module "mysql" {
   source     = "./mysql"
   cluster_ip = var.cluster_ip
-  # namespace     = var.namespace
   namespace-prod = var.namespace-prod
   mysql_version  = var.mysql_version
 }
@@ -76,17 +72,13 @@ module "redis" {
 
 module "clickhouse" {
   source             = "./clickhouse"
-  play_clickhouse_ip = var.play_clickhouse_ip
-  # namespace = var.namespace
   namespace-prod     = var.namespace-prod
   clickhouse_version = var.clickhouse_version
 }
 
 module "opentsdb" {
   source = "./opentsdb"
-  # namespace = var.namespace
   namespace-prod = var.namespace-prod
-  ip             = var.play_opentsdb_ip
 }
 
 module "postgres" {
