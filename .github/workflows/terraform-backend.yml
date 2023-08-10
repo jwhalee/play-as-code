@@ -1,4 +1,4 @@
-name: Terraform
+name: Terraform the Frontend
 
 on:
   push:
@@ -22,9 +22,9 @@ jobs:
       # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
       - name: Terraform Init
         run: terraform init
-        working-directory: ./play-frontend
+        working-directory: ./play-backend
         env:
-            GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
       # Checks that all Terraform configuration files adhere to a canonical format
       - name: Terraform Format

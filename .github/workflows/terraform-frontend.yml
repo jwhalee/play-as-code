@@ -1,0 +1,89 @@
+name: Terraform the Frontend
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Install the latest version of Terraform CLI
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1 
+
+      # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+      - name: Terraform Init
+        run: terraform init
+        working-directory: ./play-frontend
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      # Checks that all Terraform configuration files adhere to a canonical format
+      - name: Terraform Format
+        run: terraform fmt -check
+        working-directory: ./play-frontend
+
+      # Previews the changes that Terraform will make
+      - name: Plan Terraform
+        id: plan
+        continue-on-error: true
+        run: terraform plan -input=false -no-color
+        working-directory: ./play-frontend
+        env:
+            GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+            TF_VAR_influx-password: ${{ secrets.INFLUX_PASSWORD }}
+            TF_VAR_influx-token: ${{ secrets.INFLUX_TOKEN }}
+            TF_VAR_influx-token-in-header: ${{ secrets.INFLUX_TOKEN_IN_HEADER }}
+            TF_VAR_elastic-password: ${{ secrets.ELASTIC_PASSWORD }}
+            TF_VAR_mysql-password: ${{ secrets.MYSQL_PASSWORD }}
+            TF_VAR_bigquery-key: ${{ secrets.BIGQUERY_KEY }}
+            TF_VAR_mongodb-key: ${{ secrets.MONGODB_KEY }}
+            TF_VAR_discourse-key: ${{ secrets.DISCOURSE_KEY }}
+            TF_VAR_discourse-user: ${{ secrets.DISCOURSE_USER }}
+            TF_VAR_grafana-url: ${{ secrets.GRAFANA_URL }}
+            TF_VAR_grafana-token: ${{ secrets.GRAFANA_TOKEN }}
+
+
+      # Post the preview (terraform plan) from the previous step as a GitHub pull request comment
+      - name: Post Plan to GitHub PR
+        if: github.ref != 'refs/heads/main'
+        uses: mshick/add-pr-comment@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]'
+          message: |
+            Applying:
+
+            ```
+            ${{ steps.plan.outputs.stdout }}
+            ```
+
+      # Applies the terraform configuration files when the branch is `main`
+      - name: Apply Terraform
+        if: github.ref == 'refs/heads/main'
+        id: apply
+        continue-on-error: true
+        working-directory: ./play-frontend
+        env:
+            GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+            TF_VAR_influx-password: ${{ secrets.INFLUX_PASSWORD }}
+            TF_VAR_influx-token: ${{ secrets.INFLUX_TOKEN }}
+            TF_VAR_influx-token-in-header: ${{ secrets.INFLUX_TOKEN_IN_HEADER }}
+            TF_VAR_elastic-password: ${{ secrets.ELASTIC_PASSWORD }}
+            TF_VAR_mysql-password: ${{ secrets.MYSQL_PASSWORD }}
+            TF_VAR_bigquery-key: ${{ secrets.BIGQUERY_KEY }}
+            TF_VAR_mongodb-key: ${{ secrets.MONGODB_KEY }}
+            TF_VAR_discourse-key: ${{ secrets.DISCOURSE_KEY }}
+            TF_VAR_discourse-user: ${{ secrets.DISCOURSE_USER }}
+            TF_VAR_grafana-url: ${{ secrets.GRAFANA_URL }}
+            TF_VAR_grafana-token: ${{ secrets.GRAFANA_TOKEN }}
+        run: |
+          terraform apply -auto-approve
