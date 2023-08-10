@@ -11,7 +11,7 @@ resource "kubernetes_deployment" "deployment_postgresdb" {
         type = "Recreate"
       }
 
-    replicas = 1
+    replicas = 2
 
     selector {
       match_labels = {
@@ -27,52 +27,52 @@ resource "kubernetes_deployment" "deployment_postgresdb" {
       }
       spec {
         container {
-          image = "postgres:${var.postgres_version}"
-          name = "postgresdb"
+          image = "aa8y/postgres-dataset:latest"
+          name = "postgresql"
           port {
             container_port = 5432
             }
           resources {}
-          env_from {
-            config_map_ref {
-              name = "postgresdb-configmap"
-            }
-          }
+          # env_from {
+          #   config_map_ref {
+          #     name = "postgresdb-configmap"
+          #   }
+          # }
           # volume_mount {
           #   mount_path = "/var/lib/postgres/data"
           #   name = "postgresdb-claim0"
           # }
         }
         restart_policy = "Always"
-        volume {
-          name = "postgresdb-volume"
-          config_map {
-            name = "postgresdb-configmap"
-          }
-        }
+        # volume {
+        #   name = "postgresdb-volume"
+        #   config_map {
+        #     name = "postgresdb-configmap"
+        #   }
+        # }
       }
     }
   }
 }
 
-resource "kubernetes_config_map_v1" "postgresdb-configmap" {
-  metadata {
-    name = "postgresdb-configmap"
-    namespace = var.namespace-prod
-    # labels = {
-    #   app = "postgresdb"
-    # }
-  }
+# resource "kubernetes_config_map_v1" "postgresdb-configmap" {
+#   metadata {
+#     name = "postgresdb-configmap"
+#     namespace = var.namespace-prod
+#     labels = {
+#       app = "postgresdb"
+#     }
+#   }
 
-  data = {
-    # User DB
-    POSTGRES_DB = "testDB"
-    # Db user
-    POSTGRES_USER = "testUser"
-    # Db password
-    POSTGRES_PASSWORD = "testPassword"
-  }
-}
+#   data = {
+#     # User DB
+#     POSTGRES_DB = "testDB"
+#     # Db user
+#     POSTGRES_USER = "testUser"
+#     # Db password
+#     POSTGRES_PASSWORD = "testPassword"
+#   }
+# }
 
 resource "kubernetes_service" "service_postgresdb" {
   metadata {
@@ -88,7 +88,7 @@ resource "kubernetes_service" "service_postgresdb" {
       }
     port {
       name        = "5432"
-      port        = 80
+      port        = 5432
       target_port = 5432
     }
     load_balancer_ip = var.cluster_ip

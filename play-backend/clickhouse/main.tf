@@ -54,12 +54,36 @@ resource "kubernetes_service" "service_clickhouse" {
         "io.kompose.service" = "clickhouse"
       }
     port {
-      port        = 80
+      port        = 8123
       target_port = 8123
       name        = "8123"
     }
-    load_balancer_ip = var.play_clickhouse_ip
+  }
+}
 
-    type = "LoadBalancer"
+resource "kubernetes_ingress_v1" "ingress_clickhouse" {
+  metadata {
+    name = "clickhouse"
+    namespace = var.namespace-prod
+  }
+  spec {
+    ingress_class_name = "nginx"
+    rule {
+      host = "clickhouse.grafana.fun"
+      http {
+        path {
+          path_type = "Prefix"
+          path = "/"
+          backend {
+            service {
+              name = "clickhouse"
+              port {
+                number = 8123
+              }
+            }
+          }
+        }   
+      }
+    }
   }
 }

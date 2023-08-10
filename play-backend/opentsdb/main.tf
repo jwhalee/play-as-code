@@ -11,7 +11,7 @@ resource "kubernetes_deployment" "deployment_opentsdb" {
         type = "Recreate"
       }
 
-    replicas = 1
+    replicas = 2
 
     selector {
       match_labels = {
@@ -53,12 +53,36 @@ resource "kubernetes_service" "service_opentsdb" {
         "io.kompose.service" = "opentsdb"
       }
     port {
-      port        = 80
+      port        = 4242
       target_port = 4242
       name        = "4242"
     }
-    load_balancer_ip = var.ip
+  }
+}
 
-    type = "LoadBalancer"
+resource "kubernetes_ingress_v1" "ingress_opentsdb" {
+  metadata {
+    name = "opentsdb"
+    namespace = var.namespace-prod
+  }
+  spec {
+    ingress_class_name = "nginx"
+    rule {
+      host = "opentsdb.grafana.fun"
+      http {
+        path {
+          path_type = "Prefix"
+          path = "/"
+          backend {
+            service {
+              name = "opentsdb"
+              port {
+                number = 4242
+              }
+            }
+          }
+        }   
+      }
+    }
   }
 }

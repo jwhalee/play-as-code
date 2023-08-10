@@ -11,10 +11,6 @@ terraform {
       source  = "hashicorp/kubernetes"
       version = ">= 2.0.1"
     }
-    # elasticstack = {
-    #   source  = "elastic/elasticstack"
-    #   version = "~> 0.5.0"
-    # }
   }
 }
 
@@ -63,12 +59,6 @@ module "influxdb" {
   influxdb_version = var.influxdb_version
 }
 
-# module "telegraf" {
-#   source           = "./telegraf"
-#   namespace        = var.namespace
-#   telegraf_version = var.telegraf_version
-# }
-
 module "mysql" {
   source             = "./mysql"
   cluster_ip         = var.cluster_ip
@@ -106,8 +96,12 @@ module "postgres" {
   postgres_version = var.postgres_version
 }
 
-# module "nginx" {
-#   source = "./nginx"
-#   cluster_ip = var.cluster_ip
-#   namespace = var.namespace
-# }
+module "httpbin" {
+  source = "./k6-bin"
+  namespace-prod = var.namespace-prod
+}
+
+module "k6-test" {
+  source = "./k6-test"
+  namespace-prod = var.namespace-prod
+}

@@ -126,13 +126,10 @@ resource "kubernetes_service" "service_influxdb" {
         "io.kompose.service" = "influxdb"
       }
     port {
-      port        = 80
+      port        = 8086
       target_port = 8086
       name        = "8086"
     }
-    load_balancer_ip = var.play_influx_ip
-
-    type = "LoadBalancer"
   }
 }
 
@@ -148,5 +145,32 @@ resource "kubernetes_config_map_v1" "influxdb-configmap" {
     "usgs-earthquakes.flux" = "${file("${path.module}/assets/usgs-earthquakes.flux")}"
     "influxdb.conf" = "${file("${path.module}/assets/influxdb.conf")}"
     "setup.sh" = "${file("${path.module}/assets/setup.sh")}"
+  }
+}
+
+resource "kubernetes_ingress_v1" "ingress_influx" {
+  metadata {
+    name = "influxdb"
+    namespace = var.namespace-prod
+  }
+  spec {
+    ingress_class_name = "nginx"
+    rule {
+      host = "influx.grafana.fun"
+      http {
+        path {
+          path_type = "Prefix"
+          path = "/"
+          backend {
+            service {
+              name = "influxdb"
+              port {
+                number = 8086
+              }
+            }
+          }
+        }   
+      }
+    }
   }
 }

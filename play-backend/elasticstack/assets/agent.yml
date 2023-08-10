@@ -2,8 +2,8 @@ id: de7fb970-fc27-11ed-9995-d512313050b7
 outputs:
   default:
     type: elasticsearch
-    hosts: ["http://34.72.254.142:80"]
-    protocol: http
+    hosts: ["https://elastic.grafana.com"]
+    protocol: https
     path: /
     # api_key: "sX4UVYgBTxLQg3WWr2LG:zQA9mIl3QHqzelinqjzGxQ"
     username: "elastic"
