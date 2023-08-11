@@ -11,7 +11,7 @@ resource "kubernetes_deployment" "deployment_httpbin" {
       type = "Recreate"
     }
 
-    replicas = 4
+    replicas = 2
 
     selector {
       match_labels = {
@@ -48,11 +48,11 @@ resource "kubernetes_deployment" "deployment_httpbin" {
           }
           resources {
             limits = {
-              cpu    = "70m"
+              cpu    = "350m"
               memory = "96Mi"
             }
             requests = {
-              cpu    = "50m"
+              cpu    = "250m"
               memory = "64Mi"
             }
           }
