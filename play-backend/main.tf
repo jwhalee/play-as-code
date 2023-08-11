@@ -39,7 +39,6 @@ provider "kubernetes" {
 module "elasticstack" {
   source                   = "./elasticstack"
   namespace-prod           = var.namespace-prod
-  play_elastic_domain_name = var.play_elastic_domain_name
   elastic_version          = var.elastic_version
 }
 
