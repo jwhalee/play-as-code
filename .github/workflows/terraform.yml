@@ -90,6 +90,7 @@ jobs:
 
   terraform-backend:
     runs-on: ubuntu-latest
+    needs: terraform-frontend
 
     steps:
       # Checkout the repository to the GitHub Actions runner
