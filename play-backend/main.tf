@@ -37,9 +37,9 @@ provider "kubernetes" {
 }
 
 module "elasticstack" {
-  source                   = "./elasticstack"
-  namespace-prod           = var.namespace-prod
-  elastic_version          = var.elastic_version
+  source          = "./elasticstack"
+  namespace-prod  = var.namespace-prod
+  elastic_version = var.elastic_version
 }
 
 # module "grafana" {
