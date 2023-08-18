@@ -119,7 +119,7 @@ resource "kubernetes_ingress_v1" "ingress_httpbin" {
   spec {
     ingress_class_name = "nginx"
     rule {
-      host = "k6-bin.grafana.fun"
+      host = "k6-http.grafana.fun"
       http {
         path {
           path_type = "Prefix"
