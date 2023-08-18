@@ -32,7 +32,7 @@ resource "kubernetes_deployment" "deployment_httpbin" {
           name = "dockerhub"
         }
         container {
-          image             = "grafana/k6-httpbin:v0.7.3"
+          image             = "grafana/k6-httpbin:v0.8.4"
           name              = "httpbin"
           image_pull_policy = "IfNotPresent"
           security_context {
