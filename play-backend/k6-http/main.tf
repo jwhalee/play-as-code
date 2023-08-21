@@ -1,9 +1,9 @@
 resource "kubernetes_deployment" "deployment_httpbin" {
   metadata {
-    name      = "httpbin"
+    name      = "k6-http"
     namespace = var.namespace-prod
     labels = {
-      app = "httpbin"
+      app = "k6-http"
     }
   }
   spec {
@@ -15,14 +15,14 @@ resource "kubernetes_deployment" "deployment_httpbin" {
 
     selector {
       match_labels = {
-        app = "httpbin"
+        app = "k6-http"
       }
     }
 
     template {
       metadata {
         labels = {
-          app = "httpbin"
+          app = "k6-http"
         }
       }
       spec {
@@ -33,7 +33,7 @@ resource "kubernetes_deployment" "deployment_httpbin" {
         }
         container {
           image             = "grafana/k6-httpbin:v0.7.3"
-          name              = "httpbin"
+          name              = "k6-http"
           image_pull_policy = "IfNotPresent"
           security_context {
             run_as_non_root            = true
@@ -95,14 +95,14 @@ resource "kubernetes_deployment" "deployment_httpbin" {
 resource "kubernetes_service" "service_httpbin" {
   metadata {
     labels = {
-      app = "httpbin"
+      app = "k6-http"
     }
-    name      = "httpbin"
+    name      = "k6-http"
     namespace = var.namespace-prod
   }
   spec {
     selector = {
-      app = "httpbin"
+      app = "k6-http"
     }
     port {
       port        = 8080
@@ -126,7 +126,7 @@ resource "kubernetes_ingress_v1" "ingress_httpbin" {
           path      = "/"
           backend {
             service {
-              name = "httpbin"
+              name = "k6-http"
               port {
                 number = 8080
               }

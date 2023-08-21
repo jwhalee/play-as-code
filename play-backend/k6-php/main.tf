@@ -1,9 +1,9 @@
 resource "kubernetes_deployment" "deployment_k6test" {
   metadata {
-    name      = "test-k6-io"
+    name      = "k6-php"
     namespace = var.namespace-prod
     labels = {
-      app = "test-k6-io"
+      app = "k6-php"
     }
   }
   spec {
@@ -15,25 +15,25 @@ resource "kubernetes_deployment" "deployment_k6test" {
 
     selector {
       match_labels = {
-        app = "test-k6-io"
+        app = "k6-php"
       }
     }
 
     template {
       metadata {
         labels = {
-          app = "test-k6-io"
+          app = "k6-php"
         }
       }
       spec {
-        service_account_name = "test-k6-io"
+        service_account_name = "k6-php"
 
         image_pull_secrets {
           name = "dockerhub"
         }
         container {
           image             = "grafana/test.k6.io:v0.0.3"
-          name              = "test-k6-io"
+          name              = "k6-php"
           image_pull_policy = "IfNotPresent"
           security_context {
             run_as_non_root            = false
@@ -94,14 +94,14 @@ resource "kubernetes_deployment" "deployment_k6test" {
 resource "kubernetes_service" "service_k6test" {
   metadata {
     labels = {
-      app = "test-k6-io"
+      app = "k6-php"
     }
-    name      = "test-k6-io"
+    name      = "k6-php"
     namespace = var.namespace-prod
   }
   spec {
     selector = {
-      app = "test-k6-io"
+      app = "k6-php"
     }
     port {
       port        = 8080
@@ -125,7 +125,7 @@ resource "kubernetes_ingress_v1" "ingress_k6test" {
           path      = "/"
           backend {
             service {
-              name = "test-k6-io"
+              name = "k6-php"
               port {
                 number = 8080
               }
@@ -139,7 +139,7 @@ resource "kubernetes_ingress_v1" "ingress_k6test" {
 
 resource "kubernetes_service_account_v1" "service_account_k6" {
   metadata {
-    name      = "test-k6-io"
+    name      = "k6-php"
     namespace = var.namespace-prod
   }
   image_pull_secret {
