@@ -87,12 +87,12 @@ module "postgres" {
   postgres_version = var.postgres_version
 }
 
-module "httpbin" {
-  source         = "./k6-bin"
+module "k6-http" {
+  source         = "./k6-http"
   namespace-prod = var.namespace-prod
 }
 
-module "k6-test" {
-  source         = "./k6-test"
+module "k6-bin" {
+  source         = "./k6-php"
   namespace-prod = var.namespace-prod
 }
