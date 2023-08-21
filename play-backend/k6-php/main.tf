@@ -32,7 +32,7 @@ resource "kubernetes_deployment" "deployment_k6test" {
           name = "dockerhub"
         }
         container {
-          image             = "grafana/test.k6.io:v0.0.3"
+          image             = "grafana/test.k6.io:v0.0.5"
           name              = "k6-php"
           image_pull_policy = "IfNotPresent"
           security_context {

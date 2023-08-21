@@ -26,13 +26,13 @@ resource "kubernetes_deployment" "deployment_httpbin" {
         }
       }
       spec {
-        service_account_name = "test-k6-io"
+        service_account_name = "k6-php"
 
         image_pull_secrets {
           name = "dockerhub"
         }
         container {
-          image             = "grafana/k6-httpbin:v0.7.3"
+          image             = "grafana/k6-httpbin:v0.8.4"
           name              = "k6-http"
           image_pull_policy = "IfNotPresent"
           security_context {
