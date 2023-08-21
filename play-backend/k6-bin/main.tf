@@ -32,7 +32,7 @@ resource "kubernetes_deployment" "deployment_httpbin" {
           name = "dockerhub"
         }
         container {
-          image             = "grafana/k6-httpbin:v0.7.3"
+          image             = "grafana/k6-httpbin:v0.8.4"
           name              = "httpbin"
           image_pull_policy = "IfNotPresent"
           security_context {
@@ -119,7 +119,7 @@ resource "kubernetes_ingress_v1" "ingress_httpbin" {
   spec {
     ingress_class_name = "nginx"
     rule {
-      host = "k6-bin.grafana.fun"
+      host = "k6-http.grafana.fun"
       http {
         path {
           path_type = "Prefix"

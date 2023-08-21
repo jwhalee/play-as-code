@@ -32,7 +32,7 @@ resource "kubernetes_deployment" "deployment_k6test" {
           name = "dockerhub"
         }
         container {
-          image             = "grafana/test.k6.io:v0.0.5"
+          image             = "grafana/test.k6.io:v0.0.3"
           name              = "test-k6-io"
           image_pull_policy = "IfNotPresent"
           security_context {
@@ -112,13 +112,13 @@ resource "kubernetes_service" "service_k6test" {
 
 resource "kubernetes_ingress_v1" "ingress_k6test" {
   metadata {
-    name      = "test-k6-io"
+    name      = "k6-php"
     namespace = var.namespace-prod
   }
   spec {
     ingress_class_name = "nginx"
     rule {
-      host = "k6.grafana.fun"
+      host = "k6-php.grafana.fun"
       http {
         path {
           path_type = "Prefix"

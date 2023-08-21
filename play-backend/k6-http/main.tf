@@ -1,9 +1,9 @@
-resource "kubernetes_deployment" "deployment_k6test" {
+resource "kubernetes_deployment" "deployment_httpbin" {
   metadata {
-    name      = "test-k6-io"
+    name      = "httpbin"
     namespace = var.namespace-prod
     labels = {
-      app = "test-k6-io"
+      app = "httpbin"
     }
   }
   spec {
@@ -11,18 +11,18 @@ resource "kubernetes_deployment" "deployment_k6test" {
       type = "Recreate"
     }
 
-    replicas = 2
+    replicas = 4
 
     selector {
       match_labels = {
-        app = "test-k6-io"
+        app = "httpbin"
       }
     }
 
     template {
       metadata {
         labels = {
-          app = "test-k6-io"
+          app = "httpbin"
         }
       }
       spec {
@@ -32,11 +32,12 @@ resource "kubernetes_deployment" "deployment_k6test" {
           name = "dockerhub"
         }
         container {
-          image             = "grafana/test.k6.io:v0.0.5"
-          name              = "test-k6-io"
+          image             = "grafana/k6-httpbin:v0.7.3"
+          name              = "httpbin"
           image_pull_policy = "IfNotPresent"
           security_context {
-            run_as_non_root            = false
+            run_as_non_root            = true
+            run_as_user                = 1000
             allow_privilege_escalation = false
             read_only_root_filesystem  = false
             capabilities {
@@ -91,17 +92,17 @@ resource "kubernetes_deployment" "deployment_k6test" {
   }
 }
 
-resource "kubernetes_service" "service_k6test" {
+resource "kubernetes_service" "service_httpbin" {
   metadata {
     labels = {
-      app = "test-k6-io"
+      app = "httpbin"
     }
-    name      = "test-k6-io"
+    name      = "httpbin"
     namespace = var.namespace-prod
   }
   spec {
     selector = {
-      app = "test-k6-io"
+      app = "httpbin"
     }
     port {
       port        = 8080
@@ -110,22 +111,22 @@ resource "kubernetes_service" "service_k6test" {
   }
 }
 
-resource "kubernetes_ingress_v1" "ingress_k6test" {
+resource "kubernetes_ingress_v1" "ingress_httpbin" {
   metadata {
-    name      = "test-k6-io"
+    name      = "k6-http"
     namespace = var.namespace-prod
   }
   spec {
     ingress_class_name = "nginx"
     rule {
-      host = "k6.grafana.fun"
+      host = "k6-http.grafana.fun"
       http {
         path {
           path_type = "Prefix"
           path      = "/"
           backend {
             service {
-              name = "test-k6-io"
+              name = "httpbin"
               port {
                 number = 8080
               }
@@ -134,15 +135,5 @@ resource "kubernetes_ingress_v1" "ingress_k6test" {
         }
       }
     }
-  }
-}
-
-resource "kubernetes_service_account_v1" "service_account_k6" {
-  metadata {
-    name      = "test-k6-io"
-    namespace = var.namespace-prod
-  }
-  image_pull_secret {
-    name = "dockerhub"
   }
 }
