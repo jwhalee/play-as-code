@@ -112,7 +112,7 @@ resource "kubernetes_service" "service_k6test" {
 
 resource "kubernetes_ingress_v1" "ingress_k6test" {
   metadata {
-    name      = "test-k6-io"
+    name      = "k6-php"
     namespace = var.namespace-prod
   }
   spec {

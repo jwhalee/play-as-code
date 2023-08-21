@@ -113,7 +113,7 @@ resource "kubernetes_service" "service_httpbin" {
 
 resource "kubernetes_ingress_v1" "ingress_httpbin" {
   metadata {
-    name      = "httpbin"
+    name      = "k6-http"
     namespace = var.namespace-prod
   }
   spec {
