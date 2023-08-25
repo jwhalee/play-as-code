@@ -27,6 +27,22 @@ resource "grafana_data_source" "play-ds-infinity" {
   })
 }
 
+# provision datasource
+resource "grafana_data_source" "play-ds-infinity-universal" {
+  provider = grafana.play
+
+  type                = "yesoreyeram-infinity-datasource"
+  name                = "Inifinty Universal"
+  basic_auth_enabled  = false
+  basic_auth_username = ""
+  url                 = ""
+  uid                 = "infinity-universal"
+  username            = ""
+  json_data_encoded = jsonencode({
+    globalQueries = []
+  })
+}
+
 # provision folder
 resource "grafana_folder" "play-folder-infinity" {
   provider = grafana.play
