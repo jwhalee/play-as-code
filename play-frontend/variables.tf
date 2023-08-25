@@ -12,3 +12,6 @@ variable "influx-token-in-header" {}
 variable "influx-password" {}
 variable "mongodb-key" {}
 variable "mysql-password" {}
+variable "sheets-key" {
+
+}
