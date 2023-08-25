@@ -1,6 +1,6 @@
 #################################################
 ##                                             ##
-## BIGQUERY datasource, folder, and dashboards ##
+## SHEETS datasource, folder, and dashboards   ##
 ##                                             ## 
 #################################################
 
